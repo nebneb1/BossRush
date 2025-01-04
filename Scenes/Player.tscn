@@ -1,9 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi8h22q1ndvov"]
+[gd_scene load_steps=9 format=3 uid="uid://bi8h22q1ndvov"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
 [ext_resource type="Texture2D" uid="uid://vsuffuwpceuu" path="res://icon.svg" id="1_th6tl"]
+[ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qsbg3"]
+[sub_resource type="Animation" id="Animation_xopfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.148438, 0.148438)]
+}
 
 [sub_resource type="Animation" id="Animation_hqww8"]
 resource_name = "dash"
@@ -20,32 +58,73 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_xopfe"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_u7m2t"]
+resource_name = "parry_charge"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
+tracks/0/path = NodePath("Icon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1, 1, 1, 1), Color(1, 0.756863, 0.768627, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.148438, 0.148438), Vector2(0.158, 0.158)]
+}
+
+[sub_resource type="Animation" id="Animation_eb1hu"]
+resource_name = "parry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.258816, 5.27803, 1),
+"update": 0,
+"values": [Color(1, 0.439216, 0.435294, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.203063, 3.13834, 1),
+"update": 0,
+"values": [Vector2(0.133, 0.133), Vector2(0.113, 0.113), Vector2(0.148, 0.148)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_neru6"]
 _data = {
 "RESET": SubResource("Animation_xopfe"),
-"dash": SubResource("Animation_hqww8")
+"dash": SubResource("Animation_hqww8"),
+"parry": SubResource("Animation_eb1hu"),
+"parry_charge": SubResource("Animation_u7m2t")
 }
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_pghjp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_qsbg3")
+shape = ExtResource("2_yjmjc")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.148438, 0.148438)
@@ -56,4 +135,17 @@ libraries = {
 "": SubResource("AnimationLibrary_neru6")
 }
 
+[node name="Parry" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_neru6")
+}
+
+[node name="DamageDetector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageDetector"]
+shape = ExtResource("2_yjmjc")
+
 [connection signal="animation_finished" from="Dash" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="Parry" to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="DamageDetector" to="." method="_on_damage_detector_area_entered"]
