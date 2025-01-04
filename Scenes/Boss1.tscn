@@ -1,25 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq4if74e4o0"]
 
-[ext_resource type="Texture2D" uid="uid://vsuffuwpceuu" path="res://icon.svg" id="1_dq7np"]
+[ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_yju3l"]
 
 [node name="Boss1" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(38.5, 32.5)
-scale = Vector2(0.0390625, 0.0390625)
-texture = ExtResource("1_dq7np")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(129.94, 96.2166)
-scale = Vector2(0.219687, 0.209428)
-texture = ExtResource("1_dq7np")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(188, 72)
-scale = Vector2(0.367656, 0.350487)
-texture = ExtResource("1_dq7np")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(85.44, 79.8801)
-scale = Vector2(0.149375, 0.142399)
-texture = ExtResource("1_dq7np")
+[node name="Player" parent="." instance=ExtResource("1_yju3l")]
+position = Vector2(163, 155)
