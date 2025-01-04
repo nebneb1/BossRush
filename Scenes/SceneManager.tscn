@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl58232fo47a2"]
+[gd_scene load_steps=4 format=3 uid="uid://dl58232fo47a2"]
 
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_63ovs"]
 [ext_resource type="PackedScene" uid="uid://cq4if74e4o0" path="res://Scenes/Boss1.tscn" id="1_pq67c"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q62cc"]
 viewport_path = NodePath("Main")
 
-[node name="CanvasLayer" type="Sprite2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_63ovs")
+
+[node name="MainRenderer" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
 texture = SubResource("ViewportTexture_q62cc")
 
