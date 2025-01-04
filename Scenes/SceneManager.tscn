@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl58232fo47a2"]
+
+[ext_resource type="PackedScene" uid="uid://cq4if74e4o0" path="res://Scenes/Boss1.tscn" id="1_pq67c"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q62cc"]
+viewport_path = NodePath("Main")
+
+[node name="CanvasLayer" type="Sprite2D"]
+position = Vector2(160, 90)
+texture = SubResource("ViewportTexture_q62cc")
+
+[node name="Main" type="SubViewport" parent="."]
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 2
+size = Vector2i(320, 180)
+
+[node name="Boss1" parent="Main" instance=ExtResource("1_pq67c")]
