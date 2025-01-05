@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bi8h22q1ndvov"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
-[ext_resource type="Texture2D" uid="uid://vsuffuwpceuu" path="res://icon.svg" id="1_th6tl"]
 [ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
+[ext_resource type="Texture2D" uid="uid://r4bsbk5bg1ba" path="res://Art/Sprites/TestSprite.png" id="3_qfsdk"]
 
 [sub_resource type="Animation" id="Animation_xopfe"]
 length = 0.001
@@ -40,7 +40,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.148438, 0.148438)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hqww8"]
@@ -56,33 +56,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-1.27456, 1),
 "update": 0,
 "values": [0.0, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_u7m2t"]
-resource_name = "parry_charge"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.756863, 0.768627, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.148438, 0.148438), Vector2(0.158, 0.158)]
 }
 
 [sub_resource type="Animation" id="Animation_eb1hu"]
@@ -109,7 +82,34 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(0.203063, 3.13834, 1),
 "update": 0,
-"values": [Vector2(0.133, 0.133), Vector2(0.113, 0.113), Vector2(0.148, 0.148)]
+"values": [Vector2(0.9, 0.9), Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u7m2t"]
+resource_name = "parry_charge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.756863, 0.768627, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_neru6"]
@@ -127,8 +127,7 @@ script = ExtResource("1_pghjp")
 shape = ExtResource("2_yjmjc")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.148438, 0.148438)
-texture = ExtResource("1_th6tl")
+texture = ExtResource("3_qfsdk")
 
 [node name="Dash" type="AnimationPlayer" parent="."]
 libraries = {

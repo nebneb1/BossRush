@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0lsy4t5x0my8"]
+
+[ext_resource type="Texture2D" uid="uid://dk4ea7gs6pnrs" path="res://Art/Sprites/Sparkles/star4.png" id="1_v3dhs"]
+
+[sub_resource type="Gradient" id="Gradient_kbi1c"]
+offsets = PackedFloat32Array(0, 0.247191, 0.674157, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 203
+lifetime = 4.82
+texture = ExtResource("1_v3dhs")
+emission_shape = 3
+emission_rect_extents = Vector2(320, 180)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_max = 101.91
+damping_max = 10.191
+color_ramp = SubResource("Gradient_kbi1c")

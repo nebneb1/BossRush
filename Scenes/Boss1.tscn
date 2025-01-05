@@ -1,7 +1,115 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq4if74e4o0"]
+[gd_scene load_steps=21 format=3 uid="uid://cq4if74e4o0"]
 
 [ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_yju3l"]
+[ext_resource type="Shader" path="res://Shaders/Boss1.gdshader" id="2_0bq6s"]
+[ext_resource type="Texture2D" uid="uid://buf5wl0ukmvox" path="res://Art/Sprites/Sprite-0002/frame_0_delay-0.1s.png" id="3_fpyub"]
+[ext_resource type="Texture2D" uid="uid://brjwuyw0gug87" path="res://Art/Sprites/Sprite-0002/frame_1_delay-0.1s.png" id="4_14d5w"]
+[ext_resource type="Texture2D" uid="uid://cy65n5bludjfm" path="res://Art/Sprites/Sprite-0002/frame_2_delay-0.1s.png" id="5_rr6i0"]
+[ext_resource type="Texture2D" uid="uid://chkciqr4wist8" path="res://Art/Sprites/Sprite-0002/frame_3_delay-0.1s.png" id="6_35617"]
+[ext_resource type="Texture2D" uid="uid://dek083vg7x5y1" path="res://Art/Sprites/Sprite-0002/frame_4_delay-0.1s.png" id="7_h7f66"]
+[ext_resource type="Texture2D" uid="uid://dv4kjtxdsnghh" path="res://Art/Sprites/Sprite-0002/frame_5_delay-0.1s.png" id="8_d11qv"]
+[ext_resource type="Texture2D" uid="uid://bdao3mxu7rqrv" path="res://Art/Sprites/Sprite-0002/frame_6_delay-0.1s.png" id="9_2qrxl"]
+[ext_resource type="Texture2D" uid="uid://bjnwkvqnkkx5d" path="res://Art/Sprites/Sprite-0002/frame_7_delay-0.1s.png" id="10_qsr15"]
+[ext_resource type="PackedScene" uid="uid://c0lsy4t5x0my8" path="res://Scenes/Boss1Particles.tscn" id="11_ndilc"]
+[ext_resource type="Texture2D" uid="uid://q7ahsl41jt8k" path="res://Art/Sprites/Sparkles/star1.png" id="12_isklt"]
+[ext_resource type="Texture2D" uid="uid://cwff6f14m0xpv" path="res://Art/Sprites/Sparkles/star2.png" id="13_jbabe"]
+[ext_resource type="Texture2D" uid="uid://ddq8c57f7vb1i" path="res://Art/Sprites/Sparkles/star3.png" id="14_xf0lf"]
+[ext_resource type="Texture2D" uid="uid://b4n3cal6jmn3" path="res://Art/Sprites/Sparkles/star5.png" id="15_bctxj"]
+[ext_resource type="Texture2D" uid="uid://oi173y6hdt62" path="res://Art/Sprites/Sparkles/star6.png" id="16_w6qkt"]
+[ext_resource type="Texture2D" uid="uid://bhl8716oiukoc" path="res://Art/Sprites/Sparkles/star7.png" id="17_jrsj6"]
+[ext_resource type="Texture2D" uid="uid://do5y60amdjumm" path="res://Art/Sprites/Sparkles/star8.png" id="18_y1an2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4b2m2"]
+shader = ExtResource("2_0bq6s")
+shader_parameter/goop_mask_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.22
+shader_parameter/goop_background_color = Color(0, 0, 0, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp1gg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fpyub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_14d5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rr6i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_35617")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h7f66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_d11qv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2qrxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qsr15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Boss1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_yju3l")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_4b2m2")
+position = Vector2(320, 180)
+sprite_frames = SubResource("SpriteFrames_fp1gg")
+autoplay = "default"
+frame_progress = 0.913644
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_4b2m2")
+position = Vector2(320, 180)
+sprite_frames = SubResource("SpriteFrames_fp1gg")
+autoplay = "default"
+frame_progress = 0.913644
+
+[node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CPUParticles2D" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+
+[node name="CPUParticles2D2" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+texture = ExtResource("12_isklt")
+
+[node name="CPUParticles2D3" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+texture = ExtResource("13_jbabe")
+
+[node name="CPUParticles2D4" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+texture = ExtResource("14_xf0lf")
+
+[node name="CPUParticles2D5" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+
+[node name="CPUParticles2D6" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+texture = ExtResource("15_bctxj")
+
+[node name="CPUParticles2D7" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+visible = false
+texture = ExtResource("16_w6qkt")
+
+[node name="CPUParticles2D8" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+visible = false
+texture = ExtResource("17_jrsj6")
+
+[node name="CPUParticles2D9" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+texture = ExtResource("18_y1an2")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]

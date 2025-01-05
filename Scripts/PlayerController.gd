@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+
+# stats
+var health : int = 10
+
 # movement constants
 const SPEED = 75.0
 const ACCEL = 30.0
@@ -29,7 +33,6 @@ const DASH_PARRY_COMBO_BONUS = 2.0
 
 var parry_timer = 0.0
 var parry_active = false
-
 
 # effect vars
 var invenerable_timer = 0.0
@@ -73,17 +76,12 @@ func _input(event: InputEvent) -> void:
 		invenerable = true
 		dash_animation.speed_scale = 1/DASH_TIME
 		dash_animation.play("dash")
-	
+
 	if event.is_action_pressed("parry") and dash_cooldown_timer <= 0.0 and parry_timer <= 0.0:
 		parry_timer = PARRY_WIND_UP + PARRY_DURRATION + PARRY_COOLDOWN
 		parry_animation.play("parry_charge")
 		parry_animation.speed_scale = 1/PARRY_WIND_UP
 		print("Curse you *parry* the platapus! heh")
-		
-		
-		
-		
-
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "parry_charge":
@@ -95,4 +93,11 @@ func _on_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_damage_detector_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+	if area.is_in_group("parry") and parry_active:
+		if dashing or dash_cooldown_timer >= 0.001:
+			Global.combo += DASH_PARRY_COMBO_BONUS
+		else:
+			Global.combo += PARRY_COMBO_BONUS
+	
+	elif area.is_in_group("damage"):
+		health -= area.damage
