@@ -38,10 +38,15 @@ var parry_active = false
 var invenerable_timer = 0.0
 var invenerable = false
 
+func _ready() -> void:
+	#Global.add_memory(0)
+	Global.player = self
+
 func _physics_process(delta: float) -> void:
 	# we get input direction like this becuse it works for both controller and kbm!
 	var dir = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"), 
 	Input.get_action_strength("down") - Input.get_action_strength("up")).normalized() 
+	dir = Global.run_memories("dir", dir)
 	
 	if not dashing:
 		if dash_cooldown_timer >= 0: dash_cooldown_timer -= delta
@@ -95,9 +100,9 @@ func _on_animation_finished(anim_name: StringName) -> void:
 func _on_damage_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("parry") and parry_active:
 		if dashing or dash_cooldown_timer >= 0.001:
-			Global.combo += DASH_PARRY_COMBO_BONUS
+			Global.combo += Global.run_memories("parry_combo", DASH_PARRY_COMBO_BONUS)
 		else:
-			Global.combo += PARRY_COMBO_BONUS
+			Global.combo += Global.run_memories("parry_combo", PARRY_COMBO_BONUS)
 	
 	elif area.is_in_group("damage"):
-		health -= area.damage
+		health -= Global.run_memories("damage", area.damage)

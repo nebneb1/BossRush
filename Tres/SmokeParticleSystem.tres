@@ -1,0 +1,52 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://n7x8pjdn2vn"]
+
+[sub_resource type="Curve" id="Curve_mwcj4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.674157, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w1bnm"]
+curve = SubResource("Curve_mwcj4")
+
+[sub_resource type="Curve" id="Curve_3av4k"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.0149813, 83.4622), 0.0, 0.0, 0, 0, Vector2(0.299625, -53.1685), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_peq2q"]
+curve = SubResource("Curve_3av4k")
+
+[sub_resource type="Curve" id="Curve_lawd0"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bdifh"]
+curve = SubResource("Curve_lawd0")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(300, 300, 1)
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 121.35
+initial_velocity_max = 373.05
+gravity = Vector3(0, -14.615, 0)
+linear_accel_min = -4.08
+linear_accel_max = 5.44
+linear_accel_curve = SubResource("CurveTexture_peq2q")
+tangential_accel_curve = SubResource("CurveTexture_bdifh")
+damping_max = 0.28
+scale_min = 0.1
+scale_max = 0.3
+alpha_curve = SubResource("CurveTexture_w1bnm")
+hue_variation_min = -0.27
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 2.53
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.14
+collision_use_scale = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
 [ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
-[ext_resource type="Texture2D" uid="uid://r4bsbk5bg1ba" path="res://Art/Sprites/TestSprite.png" id="3_qfsdk"]
+[ext_resource type="Texture2D" uid="uid://cqhveyn8wbefg" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagFront.png" id="3_eoi7k"]
 
 [sub_resource type="Animation" id="Animation_xopfe"]
 length = 0.001
@@ -120,14 +120,14 @@ _data = {
 "parry_charge": SubResource("Animation_u7m2t")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_pghjp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_yjmjc")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("3_qfsdk")
+texture = ExtResource("3_eoi7k")
 
 [node name="Dash" type="AnimationPlayer" parent="."]
 libraries = {

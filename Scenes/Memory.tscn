@@ -1,0 +1,252 @@
+[gd_scene load_steps=13 format=3 uid="uid://blb4140pjaktn"]
+
+[ext_resource type="Script" path="res://Scripts/Memory.gd" id="1_gr1xf"]
+[ext_resource type="Texture2D" uid="uid://q7ahsl41jt8k" path="res://Art/Sprites/Sparkles/star1.png" id="1_pbqaq"]
+[ext_resource type="FontFile" uid="uid://c2uo4xv5s585d" path="res://Fonts/GrapeSoda.ttf" id="2_s6awp"]
+[ext_resource type="Script" path="res://Fonts/Effects/rte_wack.gd" id="3_ttcxt"]
+
+[sub_resource type="Animation" id="Animation_wayjl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Name:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Cost:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/Description:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xslsk"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a5fx8"]
+resource_name = "hide"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Name:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 10),
+"transitions": PackedFloat32Array(1, 0.482968, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 1, 0.0745098), Color(1, 0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Description:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(0.594604, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0.0980392), Color(1, 0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Cost:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 10),
+"transitions": PackedFloat32Array(1, 0.594604, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 1, 0.0705882), Color(1, 0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ig4k"]
+resource_name = "show"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Name:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1),
+"transitions": PackedFloat32Array(1.93187, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0), Color(1, 0.266667, 1, 0.0784314), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Description:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.4),
+"transitions": PackedFloat32Array(2.2974, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0), Color(1, 0, 1, 0.0666667), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Cost:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 0), Color(1, 0, 1, 0.0705882), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p8ckx"]
+_data = {
+"RESET": SubResource("Animation_wayjl"),
+"fade": SubResource("Animation_xslsk"),
+"hide": SubResource("Animation_a5fx8"),
+"show": SubResource("Animation_7ig4k")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_bwpyl"]
+base_font = ExtResource("2_s6awp")
+spacing_glyph = 5
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_vxb1x"]
+script = ExtResource("3_ttcxt")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0t66"]
+radius = 14.0
+
+[node name="Memory" type="Node2D"]
+script = ExtResource("1_gr1xf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p8ckx")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.5
+offset_right = 144.5
+offset_bottom = 237.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer"]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("1_pbqaq")
+stretch_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+custom_minimum_size = Vector2(289.745, 42.835)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_bwpyl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center][tornado radius=5.0][color=pale_turquoise]Memory"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_vxb1x")]
+
+[node name="Cost" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+custom_minimum_size = Vector2(0, 22.65)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_s6awp")
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/italics_font_size = 0
+bbcode_enabled = true
+text = "[center][tornado radius=1.0][color=pink]100 Score"
+scroll_active = false
+autowrap_mode = 2
+custom_effects = [SubResource("RichTextEffect_vxb1x")]
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+custom_minimum_size = Vector2(172.265, 27.12)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_s6awp")
+theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/italics_font_size = 0
+bbcode_enabled = true
+text = "[center][tornado radius=1.0][color=plum]This is a long, long description for the above memory. It really doesn't need to be this long, but it is anyways"
+scroll_active = false
+autowrap_mode = 2
+custom_effects = [SubResource("RichTextEffect_vxb1x")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_v0t66")
+
+[connection signal="mouse_entered" from="VBoxContainer/Icon" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Icon" to="." method="_on_texture_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

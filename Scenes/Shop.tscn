@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b08yvcm8vbur8"]
+
+[ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_2enyr"]
+[ext_resource type="Script" path="res://Scripts/Recall.gd" id="2_vny2j"]
+[ext_resource type="Texture2D" uid="uid://ddq8c57f7vb1i" path="res://Art/Sprites/Sparkles/star3.png" id="3_ar34r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycpeu"]
+radius = 25.0276
+
+[node name="Shop" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_2enyr")]
+position = Vector2(316, 264)
+
+[node name="Recall" type="Node2D" parent="."]
+position = Vector2(320, 180)
+script = ExtResource("2_vny2j")
+
+[node name="Area2D" type="Area2D" parent="Recall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Recall/Area2D"]
+shape = SubResource("CircleShape2D_ycpeu")
+
+[node name="Offers" type="Node2D" parent="Recall"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Recall"]
+texture = ExtResource("3_ar34r")
+
+[connection signal="body_entered" from="Recall/Area2D" to="Recall" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Recall/Area2D" to="Recall" method="_on_area_2d_body_exited"]
