@@ -1,116 +1,42 @@
-[gd_scene load_steps=9 format=3 uid="uid://bi8h22q1ndvov"]
+[gd_scene load_steps=33 format=3 uid="uid://bi8h22q1ndvov"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
 [ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
 [ext_resource type="Texture2D" uid="uid://cqhveyn8wbefg" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagFront.png" id="3_eoi7k"]
+[ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="3_lqhjc"]
+[ext_resource type="Texture2D" uid="uid://d3msgp0n1y6h" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk1.png" id="3_rvk07"]
+[ext_resource type="Texture2D" uid="uid://b60017rrpe0ei" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk2.png" id="4_cu16s"]
+[ext_resource type="Texture2D" uid="uid://cb6bdp43sccdd" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk3.png" id="5_khxwc"]
+[ext_resource type="Texture2D" uid="uid://vbmqff27x5n3" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk4.png" id="6_dd4oe"]
+[ext_resource type="Texture2D" uid="uid://xcrvwakd2jua" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk5.png" id="7_ixdfr"]
+[ext_resource type="Texture2D" uid="uid://c50b8e2e55gk2" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk6.png" id="8_fg0vq"]
+[ext_resource type="Texture2D" uid="uid://b2rkn5eoym8do" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk7.png" id="9_mg7nc"]
+[ext_resource type="Texture2D" uid="uid://d36ik6ivl7jpk" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk8.png" id="10_cekh2"]
+[ext_resource type="Texture2D" uid="uid://b7l5ir806ky2k" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk9.png" id="11_frxem"]
+[ext_resource type="Texture2D" uid="uid://buniic53ebld7" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk10.png" id="12_jucb4"]
+[ext_resource type="Texture2D" uid="uid://p07h7xj36xjm" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk11.png" id="13_y3t6m"]
+[ext_resource type="Texture2D" uid="uid://rm1djxb5ytmd" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk12.png" id="14_dbfhl"]
+[ext_resource type="Texture2D" uid="uid://biji8lm4u7xrm" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk13.png" id="15_2kg8s"]
+[ext_resource type="Texture2D" uid="uid://gm418ej1llyp" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk14.png" id="16_rs41g"]
+[ext_resource type="Texture2D" uid="uid://dq83fbd0sl33r" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk15.png" id="17_kn6bc"]
+[ext_resource type="Texture2D" uid="uid://dybjovuydbov8" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk16.png" id="18_k1vj7"]
+[ext_resource type="Texture2D" uid="uid://cvgunlh0lovac" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk17.png" id="19_jlslk"]
+[ext_resource type="Texture2D" uid="uid://hfa18c5lp10w" path="res://Art/Sprites/Protagonist Sprites&Animations/Front walk/ProtagFrontwalk18.png" id="20_vta07"]
+[ext_resource type="Texture2D" uid="uid://ddxsqduw4lg1f" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagBack.png" id="21_kjfoo"]
+[ext_resource type="Texture2D" uid="uid://d3n85qr716jws" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagLeft.png" id="22_8mis1"]
+[ext_resource type="Texture2D" uid="uid://vupqs8or0yhc" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagRight.png" id="23_7vm5f"]
 
 [sub_resource type="Animation" id="Animation_xopfe"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_hqww8"]
 resource_name = "dash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-1.27456, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
 
 [sub_resource type="Animation" id="Animation_eb1hu"]
 resource_name = "parry"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(0.258816, 5.27803, 1),
-"update": 0,
-"values": [Color(1, 0.439216, 0.435294, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(0.203063, 3.13834, 1),
-"update": 0,
-"values": [Vector2(0.9, 0.9), Vector2(0.6, 0.6), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_u7m2t"]
 resource_name = "parry_charge"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.756863, 0.768627, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_neru6"]
 _data = {
@@ -120,14 +46,136 @@ _data = {
 "parry_charge": SubResource("Animation_u7m2t")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijs6a"]
+shader = ExtResource("3_lqhjc")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.0313
+shader_parameter/ymult = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fkku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_kjfoo")
+}],
+"loop": true,
+"name": &"back",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_kjfoo")
+}],
+"loop": true,
+"name": &"backwalk",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eoi7k")
+}],
+"loop": true,
+"name": &"front",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rvk07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cu16s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_khxwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dd4oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ixdfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fg0vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mg7nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cekh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_frxem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jucb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_y3t6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dbfhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2kg8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rs41g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kn6bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_k1vj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jlslk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_vta07")
+}],
+"loop": true,
+"name": &"frontwalk",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_8mis1")
+}],
+"loop": true,
+"name": &"left",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_8mis1")
+}],
+"loop": true,
+"name": &"leftwalk",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_7vm5f")
+}],
+"loop": true,
+"name": &"right",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_7vm5f")
+}],
+"loop": true,
+"name": &"rightwalk",
+"speed": 30.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_pghjp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_yjmjc")
-
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("3_eoi7k")
 
 [node name="Dash" type="AnimationPlayer" parent="."]
 libraries = {
@@ -144,6 +192,13 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageDetector"]
 shape = ExtResource("2_yjmjc")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_ijs6a")
+sprite_frames = SubResource("SpriteFrames_5fkku")
+animation = &"frontwalk"
+autoplay = "front"
 
 [connection signal="animation_finished" from="Dash" to="." method="_on_animation_finished"]
 [connection signal="animation_finished" from="Parry" to="." method="_on_animation_finished"]

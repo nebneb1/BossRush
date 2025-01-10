@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://18y2lapde54b"]
+
+[ext_resource type="Script" path="res://Scripts/Ghost.gd" id="1_bsrc5"]
+[ext_resource type="Shader" path="res://Shaders/Ghost.gdshader" id="1_vfx5h"]
+[ext_resource type="Texture2D" uid="uid://cqhveyn8wbefg" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagFront.png" id="2_m4lub"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7deqw"]
+resource_local_to_scene = true
+shader = ExtResource("1_vfx5h")
+shader_parameter/GhostColor = Color(0, 0, 0.462745, 1)
+
+[node name="Ghost" type="Sprite2D"]
+z_index = -9
+material = SubResource("ShaderMaterial_7deqw")
+texture = ExtResource("2_m4lub")
+script = ExtResource("1_bsrc5")

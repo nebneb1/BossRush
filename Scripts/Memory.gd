@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 func delete():
 	enabled = false
 	if Global.active_hover == self: Global.active_hover = null
-	$AnimationPlayer.play("fade", 0.5)
+	$AnimationPlayer.play("fade", 0.5, randf_range(0.5,1.5))
 	deleting = true
 
 func mouse_entered() -> void:
