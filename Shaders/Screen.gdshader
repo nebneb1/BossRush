@@ -13,7 +13,7 @@ void fragment() {
 	//pixelColor *= 2.0;
 	//original *= 2.0;
 	//COLOR = (pixelColor * (length(SCREEN_UV - vec2(0.5, 0.5))+2.0) + original * (1.0-length(SCREEN_UV - vec2(0.5, 0.5)))/2.0);
-	COLOR = pixelColor * 1.1 - original;
+	COLOR = pixelColor * 2.0 - original;
 	//float balance = (sin(TIME*1.1)+1.0)/2.0;
 	//balance = balance / 1.5 + 0.25;
 	//COLOR = pixelColor * balance + original * (1.0-balance);

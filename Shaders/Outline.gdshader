@@ -6,7 +6,6 @@ uniform float width : hint_range(0.0, 0.1, 0.0001) = 0.00263;
 uniform float ymult = 2.108;
 
 void vertex() {
-	VERTEX *= 2.0;
 	// Called for every vertex the material is visible on.
 }
 

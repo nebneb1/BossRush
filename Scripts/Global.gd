@@ -4,6 +4,10 @@ const MAX_COMBO = 8.0
 var combo = 1.0
 var score : int = 10000
 var player : CharacterBody2D
+var main : Control
+
+const SCENE_SEQUENCE = ["shop", "ache"]
+var next_scenes = SCENE_SEQUENCE.duplicate()
 
 const PRICE_RANGES : Dictionary = {
 	"common": [50, 100],
@@ -126,8 +130,22 @@ func random_memory(rarity : String):
 func random_price(rarity: String):
 	return randi_range(PRICE_RANGES[rarity][0], PRICE_RANGES[rarity][1])
 
+var _first_scene = true
+func next_scene():
+	if _first_scene:
+		_first_scene = false
+		main.switch_scene(next_scenes[0])
+	else:
+		if next_scenes.size() <= 0: next_scenes = SCENE_SEQUENCE.duplicate()
+		main.trans_to_scene(next_scenes[0], "fade_to_black", 3.0)
+	
+	next_scenes.pop_front()
+
+
+
 func _ready() -> void:
 	randomize()
+	call_deferred("next_scene")
 
 func _process(delta: float):
 	combo = clamp(combo, 1.0, MAX_COMBO)

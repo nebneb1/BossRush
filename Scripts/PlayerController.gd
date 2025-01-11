@@ -16,6 +16,7 @@ const DEADZONE = 0.1
 
 @onready var ghost_scene = preload("res://Scenes/Ghost.tscn")
 
+var movement_disabled : bool = false
 # dash parameters
 const DASH_COOLDOWN = 0.15
 const DASH_TIME = 0.75
@@ -46,6 +47,8 @@ var invenerable = false
 
 func _ready() -> void:
 	#Global.add_memory(0)
+	movement_disabled = true
+	#$Fall.play()
 	Global.player = self
 
 var ghost_timer = 0.0
@@ -67,7 +70,10 @@ func _physics_process(delta: float) -> void:
 	Input.get_action_strength("down") - Input.get_action_strength("up")).normalized() 
 	dir = Global.run_memories("dir", dir)
 	
-	if not dashing: set_anim(dir)
+	if movement_disabled: 
+		dir = Vector2.ZERO
+		
+	elif not dashing: set_anim(dir)
 	
 	if abs(dir.length()) > DEADZONE or dashing:
 		ghost_timer += delta
@@ -118,6 +124,11 @@ func _input(event: InputEvent) -> void:
 		parry_animation.speed_scale = 1/PARRY_WIND_UP
 		print("Curse you *parry* the platapus! heh")
 	
+	if event.is_action_pressed("interact"):
+		$Fall.play("Down")
+		movement_disabled = true
+		$Sprite/Particles.emitting = true
+		Global.next_scene()
 	
 	
 	
@@ -141,3 +152,8 @@ func _on_damage_detector_area_entered(area: Area2D) -> void:
 	
 	elif area.is_in_group("damage"):
 		health -= Global.run_memories("damage", area.damage)
+
+
+func _on_fall_animation_finished(anim_name: StringName) -> void:
+	movement_disabled = false
+	$Sprite/Particles.emitting = false

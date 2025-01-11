@@ -1,122 +1,270 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl58232fo47a2"]
+[gd_scene load_steps=18 format=3 uid="uid://dl58232fo47a2"]
 
-[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_63ovs"]
-[ext_resource type="Script" path="res://Scripts/Sub.gd" id="2_uds61"]
-[ext_resource type="PackedScene" uid="uid://b08yvcm8vbur8" path="res://Scenes/Shop.tscn" id="2_ugfm1"]
-[ext_resource type="PackedScene" uid="uid://cgi557a0c1lss" path="res://Scenes/Smoke.tscn" id="4_uyw8n"]
-[ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="5_fr2co"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_nfft5"]
+[ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="3_f6pnk"]
+[ext_resource type="PackedScene" uid="uid://bagt08ca3cu7q" path="res://Scenes/ShopScene.tscn" id="3_tcb5t"]
+[ext_resource type="Shader" path="res://Shaders/Screen2.gdshader" id="4_i77r7"]
+[ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="5_5begj"]
+[ext_resource type="Shader" path="res://Shaders/SSSpin.gdshader" id="6_3b6iy"]
 [ext_resource type="Shader" path="res://Shaders/Distort.gdshader" id="6_a2i54"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhkrp"]
-shader = ExtResource("5_fr2co")
-shader_parameter/colors = PackedColorArray(0.317647, 0.054902, 0.360784, 1, 0.0980392, 0, 0.0117647, 1, 0.215686, 0, 0.286275, 1, 0.364706, 0, 0.529412, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+[sub_resource type="GDScript" id="GDScript_p6iji"]
+script/source = "extends SubViewport
+#func _process(delta: float) -> void:
+	#update_mouse_cursor_state()
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnsbw"]
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2patt"]
+shader = ExtResource("3_f6pnk")
+shader_parameter/colors = PackedColorArray(1, 1, 1, 1, 0.894118, 0.843137, 1, 1, 0.427451, 0.00392157, 0.752941, 1, 0.203922, 0, 0.380392, 1, 0.290196, 0, 0.521569, 1, 0.145098, 0, 0.290196, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7jsj"]
+shader = ExtResource("4_i77r7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tqs1"]
+shader = ExtResource("5_5begj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmbpe"]
+noise_type = 2
+frequency = 0.0014
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h6bpu"]
+width = 1920
+height = 1080
+noise = SubResource("FastNoiseLite_cmbpe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6kq8"]
+shader = ExtResource("6_3b6iy")
+shader_parameter/max_blend = 0.0
+shader_parameter/rotation_offset = 0.0
+shader_parameter/intensity = 0.341
+shader_parameter/invert = false
+shader_parameter/rel_rect_size = Vector2(1920, 1080)
+shader_parameter/safe = 1.15
+shader_parameter/noise = SubResource("NoiseTexture2D_h6bpu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8ni1"]
 shader = ExtResource("6_a2i54")
 shader_parameter/center = Vector2(0.535, 0.47)
-shader_parameter/strength = 10.0
-shader_parameter/falloff = 0.1
+shader_parameter/strength = 7.549
+shader_parameter/falloff = 1.0
 shader_parameter/direction = 1.0
 shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/color_tint = Vector4(-0.715, -0.575, 3.64, 0.215)
+shader_parameter/color_tint = Vector4(-0.875, -2.22, 1.565, 0.215)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ta8is"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4ifq"]
 shader = ExtResource("6_a2i54")
 shader_parameter/center = Vector2(0.535, 0.47)
-shader_parameter/strength = 8.027
+shader_parameter/strength = -10.0
 shader_parameter/falloff = 0.1
 shader_parameter/direction = 1.0
 shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/color_tint = Vector4(-0.715, -0.445, 1.535, 0.235)
+shader_parameter/color_tint = Vector4(1.295, -0.365, 1.535, 0.125)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8aun"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7psv"]
 shader = ExtResource("6_a2i54")
-shader_parameter/center = Vector2(0.27, 0.675)
-shader_parameter/strength = 8.027
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/strength = -0.816
 shader_parameter/falloff = 0.1
 shader_parameter/direction = 1.0
 shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/color_tint = Vector4(-1.4, -0.29, -0.73, 0.215)
+shader_parameter/color_tint = Vector4(-1.4, -0.29, 0.69, 0.28)
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(320, 180)
-
-[node name="Node2D" type="SubViewportContainer" parent="."]
+[node name="SceneManager" type="Control" node_paths=PackedStringArray("viewport")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_63ovs")
+script = ExtResource("1_nfft5")
+viewport = NodePath("ViewportContainer/Main")
 
-[node name="Main" type="SubViewport" parent="Node2D"]
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="SubViewport" parent="ViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 canvas_item_default_texture_repeat = 2
 size = Vector2i(640, 360)
 render_target_update_mode = 4
-script = ExtResource("2_uds61")
+script = SubResource("GDScript_p6iji")
 
-[node name="Shop" parent="Node2D/Main" instance=ExtResource("2_ugfm1")]
+[node name="Node2D" parent="ViewportContainer/Main" instance=ExtResource("3_tcb5t")]
 
-[node name="Smoke" parent="Node2D/Main" instance=ExtResource("4_uyw8n")]
-
-[node name="GPUParticles2D2" parent="Node2D/Main/Smoke" index="0"]
-modulate = Color(1, 0.341176, 0.780392, 0.0235294)
-
-[node name="ColorRect" parent="Node2D/Main/Smoke/Node2D" index="0"]
-material = SubResource("ShaderMaterial_nhkrp")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-texture_filter = 1
-texture_repeat = 3
-material = SubResource("ShaderMaterial_tnsbw")
-anchors_preset = 12
-anchor_top = 1.0
+[node name="ScreenspaceEffects" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="monochrome" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/monochrome"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_2patt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-texture_filter = 1
-texture_repeat = 3
-material = SubResource("ShaderMaterial_ta8is")
-anchors_preset = 12
-anchor_top = 1.0
+[node name="melted2" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/melted2"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_o7jsj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="ColorRect3" type="ColorRect" parent="."]
-texture_filter = 1
-texture_repeat = 3
-material = SubResource("ShaderMaterial_g8aun")
-anchors_preset = 12
-anchor_top = 1.0
+[node name="melted1" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/melted1"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_1tqs1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[editable path="Node2D/Main/Smoke"]
+[node name="spin" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/spin"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_p6kq8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="drift" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/drift"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_h8ni1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ScreenspaceEffects/drift"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_o4ifq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect3" type="ColorRect" parent="ScreenspaceEffects/drift"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_x7psv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Transitions" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FadeToBlack" type="ColorRect" parent="Transitions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

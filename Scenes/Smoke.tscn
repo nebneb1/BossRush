@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgi557a0c1lss"]
+[gd_scene load_steps=7 format=3 uid="uid://cgi557a0c1lss"]
 
 [ext_resource type="Material" uid="uid://n7x8pjdn2vn" path="res://Tres/SmokeParticleSystem.tres" id="1_is8tl"]
 [ext_resource type="Texture2D" uid="uid://bbqktf3j7bibp" path="res://TechAssets/smoke.png" id="1_m7ooh"]
 [ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="2_8g02j"]
+[ext_resource type="Script" path="res://Scripts/InfAnimation.gd" id="3_ygo85"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4kfi"]
 
@@ -13,7 +14,7 @@ shader_parameter/colors = PackedColorArray(0.768627, 0.317647, 0.847059, 1, 0.30
 [node name="Smoke" type="Node2D"]
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
-modulate = Color(1, 0.341176, 0.780392, 0.0117647)
+modulate = Color(0.572549, 0.462745, 0.380392, 0.027451)
 z_index = -11
 material = SubResource("ShaderMaterial_u4kfi")
 position = Vector2(320, 183)
@@ -23,6 +24,7 @@ texture = ExtResource("1_m7ooh")
 lifetime = 12.46
 collision_base_size = 0.3
 trail_lifetime = 1.96
+script = ExtResource("3_ygo85")
 
 [node name="Node2D" type="Node2D" parent="."]
 z_index = -10

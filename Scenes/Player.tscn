@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bi8h22q1ndvov"]
+[gd_scene load_steps=75 format=3 uid="uid://bi8h22q1ndvov"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
 [ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
@@ -25,6 +25,43 @@
 [ext_resource type="Texture2D" uid="uid://ddxsqduw4lg1f" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagBack.png" id="21_kjfoo"]
 [ext_resource type="Texture2D" uid="uid://d3n85qr716jws" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagLeft.png" id="22_8mis1"]
 [ext_resource type="Texture2D" uid="uid://vupqs8or0yhc" path="res://Art/Sprites/Protagonist Sprites&Animations/ProtagRight.png" id="23_7vm5f"]
+[ext_resource type="Texture2D" uid="uid://c18vnsekmxf6y" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight1.png" id="25_4htr6"]
+[ext_resource type="Texture2D" uid="uid://14pecseggvfd" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight2.png" id="26_u5x5a"]
+[ext_resource type="Texture2D" uid="uid://ctdf0ulb4vox1" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight3.png" id="27_acbvo"]
+[ext_resource type="Texture2D" uid="uid://puym6ahtttdg" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight4.png" id="28_26671"]
+[ext_resource type="Texture2D" uid="uid://5tr8nw1bpjwn" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight5.png" id="29_ld84v"]
+[ext_resource type="Texture2D" uid="uid://mjvo0fdy6omk" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight6.png" id="30_8s0vq"]
+[ext_resource type="Texture2D" uid="uid://b3wde2y60oklq" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight7.png" id="31_efgdi"]
+[ext_resource type="Texture2D" uid="uid://bs0w4mv7vqxgf" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight8.png" id="32_qw253"]
+[ext_resource type="Texture2D" uid="uid://dbd4xt8hjwxew" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight9.png" id="33_kxy8f"]
+[ext_resource type="Texture2D" uid="uid://x1jc8relk2mt" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight10.png" id="34_awl5d"]
+[ext_resource type="Texture2D" uid="uid://dqbop7vmkjdnf" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight11.png" id="35_sntxu"]
+[ext_resource type="Texture2D" uid="uid://cc4svobo3tght" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight12.png" id="36_ro11a"]
+[ext_resource type="Texture2D" uid="uid://cs7pcbsb3pwir" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight13.png" id="37_hfbxn"]
+[ext_resource type="Texture2D" uid="uid://k811d875hoxr" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight14.png" id="38_du8k6"]
+[ext_resource type="Texture2D" uid="uid://blk5eheypmf0v" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight15.png" id="39_4hga5"]
+[ext_resource type="Texture2D" uid="uid://cxltr7b3lqkg3" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight16.png" id="40_tbko3"]
+[ext_resource type="Texture2D" uid="uid://bjx0m812lvpqf" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight17.png" id="41_41s14"]
+[ext_resource type="Texture2D" uid="uid://ladbtnckao0b" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk L/ProtagRight18.png" id="42_3ckkr"]
+[ext_resource type="Texture2D" uid="uid://bx14ugspqix6j" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight1.png" id="44_44wyo"]
+[ext_resource type="Texture2D" uid="uid://dcq054a073di1" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight2.png" id="45_hf247"]
+[ext_resource type="Texture2D" uid="uid://dxdci5tbqfeog" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight3.png" id="46_rn380"]
+[ext_resource type="Texture2D" uid="uid://d38oj2sovhloe" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight4.png" id="47_4f0b1"]
+[ext_resource type="Texture2D" uid="uid://n53tyl565wh6" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight5.png" id="48_wiec1"]
+[ext_resource type="Texture2D" uid="uid://4jbew576w21v" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight6.png" id="49_lhx5i"]
+[ext_resource type="Texture2D" uid="uid://btfprryp4kg5d" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight7.png" id="50_20jbi"]
+[ext_resource type="Texture2D" uid="uid://bxreucutvygh" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight8.png" id="51_pe11d"]
+[ext_resource type="Texture2D" uid="uid://c22petlihkuxm" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight9.png" id="52_oxk5k"]
+[ext_resource type="Texture2D" uid="uid://j2lud686byef" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight10.png" id="53_slrqn"]
+[ext_resource type="Texture2D" uid="uid://787pigbdvvlb" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight11.png" id="54_3yhfo"]
+[ext_resource type="Texture2D" uid="uid://dorloo2sff3pw" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight12.png" id="55_oeold"]
+[ext_resource type="Texture2D" uid="uid://bffkjqygl7nn0" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight13.png" id="56_5kl4v"]
+[ext_resource type="Texture2D" uid="uid://b6fnyo6g55y4v" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight14.png" id="57_q32pd"]
+[ext_resource type="Texture2D" uid="uid://f2iqq3w343yg" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight15.png" id="58_3kv6e"]
+[ext_resource type="Texture2D" uid="uid://046tbnagsdr3" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight16.png" id="59_36rfs"]
+[ext_resource type="Texture2D" uid="uid://b85etktjui8t2" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight17.png" id="60_l53ba"]
+[ext_resource type="Texture2D" uid="uid://bo85cdg6dc0vi" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight18.png" id="61_6crm4"]
+[ext_resource type="Texture2D" uid="uid://ddq8c57f7vb1i" path="res://Art/Sprites/Sparkles/star3.png" id="62_rdy8n"]
 
 [sub_resource type="Animation" id="Animation_xopfe"]
 length = 0.001
@@ -49,7 +86,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ijs6a"]
 shader = ExtResource("3_lqhjc")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.0
 shader_parameter/width = 0.0313
 shader_parameter/ymult = 1.0
 
@@ -148,7 +185,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("22_8mis1")
+"texture": ExtResource("25_4htr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_u5x5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_acbvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_26671")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ld84v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_8s0vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_efgdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_qw253")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_kxy8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_awl5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_sntxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ro11a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_hfbxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_du8k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_4hga5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_tbko3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_41s14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_3ckkr")
 }],
 "loop": true,
 "name": &"leftwalk",
@@ -164,12 +252,158 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_7vm5f")
+"texture": ExtResource("44_44wyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_hf247")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_rn380")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_4f0b1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_wiec1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_lhx5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_20jbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_pe11d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_oxk5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_slrqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_3yhfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_oeold")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_5kl4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_q32pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_3kv6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_36rfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_l53ba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_6crm4")
 }],
 "loop": true,
 "name": &"rightwalk",
 "speed": 30.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_cpprn"]
+offsets = PackedFloat32Array(0, 0.0749064, 0.632959, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0.662745, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_24tng"]
+resource_name = "Fall"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65, 1.8, 1.95, 2.1, 2.25, 2.45, 2.65, 2.9, 3.25, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.517632, 1),
+"update": 0,
+"values": [Vector2(0, -540), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mpwdn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"front"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_btf88"]
+resource_name = "Down"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9, 4.1, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front", &"right", &"back", &"left", &"front"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 4),
+"transitions": PackedFloat32Array(0.517632, 1.8025, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -14.24), Vector2(0, 540)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhhrv"]
+_data = {
+"Down": SubResource("Animation_btf88"),
+"Fall": SubResource("Animation_24tng"),
+"RESET": SubResource("Animation_mpwdn")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_pghjp")
@@ -197,9 +431,31 @@ shape = ExtResource("2_yjmjc")
 texture_repeat = 3
 material = SubResource("ShaderMaterial_ijs6a")
 sprite_frames = SubResource("SpriteFrames_5fkku")
-animation = &"frontwalk"
+animation = &"front"
 autoplay = "front"
+
+[node name="Particles" type="CPUParticles2D" parent="Sprite"]
+self_modulate = Color(1, 0.321569, 0.866667, 1)
+z_index = -1
+amount = 93
+lifetime = 2.0
+texture = ExtResource("62_rdy8n")
+emission_shape = 3
+emission_rect_extents = Vector2(9.115, 15.595)
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 19.11
+damping_max = 2.548
+color_ramp = SubResource("Gradient_cpprn")
+
+[node name="Fall" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jhhrv")
+}
+autoplay = "Fall"
 
 [connection signal="animation_finished" from="Dash" to="." method="_on_animation_finished"]
 [connection signal="animation_finished" from="Parry" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="DamageDetector" to="." method="_on_damage_detector_area_entered"]
+[connection signal="animation_finished" from="Fall" to="." method="_on_fall_animation_finished"]

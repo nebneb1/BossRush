@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bagt08ca3cu7q"]
+
+[ext_resource type="PackedScene" uid="uid://b08yvcm8vbur8" path="res://Scenes/Shop.tscn" id="1_7d5oj"]
+[ext_resource type="PackedScene" uid="uid://cgi557a0c1lss" path="res://Scenes/Smoke.tscn" id="2_esoyg"]
+[ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="3_ipni0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhkrp"]
+shader = ExtResource("3_ipni0")
+shader_parameter/colors = PackedColorArray(0.317647, 0.054902, 0.360784, 1, 0.0980392, 0, 0.0117647, 1, 0.215686, 0, 0.286275, 1, 0.364706, 0, 0.529412, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shop" parent="." instance=ExtResource("1_7d5oj")]
+
+[node name="Smoke" parent="." instance=ExtResource("2_esoyg")]
+
+[node name="GPUParticles2D2" parent="Smoke" index="0"]
+modulate = Color(1, 0.341176, 0.780392, 0.0235294)
+
+[node name="ColorRect" parent="Smoke/Node2D" index="0"]
+material = SubResource("ShaderMaterial_nhkrp")
+
+[editable path="Smoke"]

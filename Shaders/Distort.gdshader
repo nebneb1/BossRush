@@ -5,7 +5,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform vec2 center = vec2(0.5, 0.5);
 
 // Intensity of the whirl effect
-uniform float strength : hint_range(0.0, 10.0) = 1.0;
+uniform float strength : hint_range(-10.0, 10.0) = 1.0;
 
 // Falloff of the effect: how the intensity decreases with distance
 uniform float falloff : hint_range(0.1, 10.0) = 1.0;
