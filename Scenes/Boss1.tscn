@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://oi173y6hdt62" path="res://Art/Sprites/Sparkles/star6.png" id="16_w6qkt"]
 [ext_resource type="Texture2D" uid="uid://bhl8716oiukoc" path="res://Art/Sprites/Sparkles/star7.png" id="17_jrsj6"]
 [ext_resource type="Texture2D" uid="uid://do5y60amdjumm" path="res://Art/Sprites/Sparkles/star8.png" id="18_y1an2"]
-[ext_resource type="Texture2D" uid="uid://5o6syqn13q43" path="res://Art/BackgroundsOrArenas/Test Background2.png" id="19_noe1r"]
 [ext_resource type="Script" path="res://Scripts/ComplexDamage.gd" id="19_x2sau"]
+[ext_resource type="Texture2D" uid="uid://wxgbof2rlotx" path="res://Art/BackgroundsOrArenas/Sprite-0004.png" id="20_r3wlr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4b2m2"]
 shader = ExtResource("2_0bq6s")
@@ -132,10 +132,10 @@ epsilon = 2
 [node name="TestBackground2" type="Sprite2D" parent="Arena"]
 z_index = -2808
 position = Vector2(320, 180)
-texture = ExtResource("19_noe1r")
+texture = ExtResource("20_r3wlr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Arena"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arena/StaticBody2D"]
-visible = false
+scale = Vector2(10, 10)
 polygon = PackedVector2Array(85, 360, 542, 360, 544, 115, 86, 115, 86, 359, 82, 422, 55, 337, 46, 65, 596, 66, 593, 399, 84, 421)

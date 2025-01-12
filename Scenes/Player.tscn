@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://bi8h22q1ndvov"]
+[gd_scene load_steps=116 format=3 uid="uid://bi8h22q1ndvov"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
 [ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
@@ -75,9 +75,12 @@
 [ext_resource type="Texture2D" uid="uid://b85etktjui8t2" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight17.png" id="60_l53ba"]
 [ext_resource type="Texture2D" uid="uid://bo85cdg6dc0vi" path="res://Art/Sprites/Protagonist Sprites&Animations/Protagonist Side Walk R/ProtagRight18.png" id="61_6crm4"]
 [ext_resource type="Texture2D" uid="uid://ddq8c57f7vb1i" path="res://Art/Sprites/Sparkles/star3.png" id="62_rdy8n"]
+[ext_resource type="AudioStream" uid="uid://e517nhsvkr3p" path="res://Audio/SFX/DREAM-SFX-Damage1.wav" id="76_dwwo8"]
 [ext_resource type="AudioStream" uid="uid://d1rymd2fhhh08" path="res://Audio/SFX/DREAM-SFX-Step1.wav" id="76_rmli2"]
+[ext_resource type="AudioStream" uid="uid://s8oa887ru5k" path="res://Audio/SFX/DREAM-SFX-Damage2.wav" id="77_dbwk6"]
 [ext_resource type="AudioStream" uid="uid://df0lipwhrt1jg" path="res://Audio/SFX/DREAM-SFX-Step2.wav" id="77_utpk3"]
 [ext_resource type="AudioStream" uid="uid://08ckjvjywrmc" path="res://Audio/SFX/DREAM-SFX-Step3.wav" id="78_vjgx6"]
+[ext_resource type="AudioStream" uid="uid://7iit0iqee2ln" path="res://Audio/SFX/DREAM-SFX-Damage4.wav" id="79_r816i"]
 [ext_resource type="AudioStream" uid="uid://c7sme04g5trsc" path="res://Audio/SFX/DREAM-SFX-Step4.wav" id="79_tm7r2"]
 [ext_resource type="AudioStream" uid="uid://bbm82671y2kda" path="res://Audio/SFX/DREAM-SFX-Step5.wav" id="80_jgspl"]
 [ext_resource type="AudioStream" uid="uid://l5of60j7sb2r" path="res://Audio/SFX/DREAM-SFX-ParryFailure1.wav" id="81_bewk7"]
@@ -86,6 +89,8 @@
 [ext_resource type="AudioStream" uid="uid://bjj7dla3hau64" path="res://Audio/SFX/DREAM-SFX-Dash2.wav" id="82_s1btm"]
 [ext_resource type="AudioStream" uid="uid://do267iaknbboq" path="res://Audio/SFX/DREAM-SFX-ParrySucess1.wav" id="83_2l85h"]
 [ext_resource type="AudioStream" uid="uid://bhy0ax4ivg3kn" path="res://Audio/SFX/DREAM-SFX-ParrySucess2.wav" id="84_2nucx"]
+[ext_resource type="Script" path="res://Scripts/SimpleDamage.gd" id="90_24wpj"]
+[ext_resource type="Texture2D" uid="uid://vsuffuwpceuu" path="res://icon.svg" id="91_23w5b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ijs6a"]
 shader = ExtResource("3_lqhjc")
@@ -354,6 +359,16 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.0749064, 0.632959, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0.662745, 1, 1, 1, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3nw21"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("76_dwwo8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("77_dbwk6")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("79_r816i")
+stream_2/weight = 1.0
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v6ptx"]
 random_pitch = 1.15
 streams_count = 5
@@ -524,11 +539,44 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_q6kyq"]
 resource_name = "damage"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.298039), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d4mqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ktrq"]
 _data = {
+"RESET": SubResource("Animation_d4mqh"),
 "damage": SubResource("Animation_q6kyq")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sod1e"]
+size = Vector2(33, 7)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstep_player") groups=["player"]]
 script = ExtResource("1_pghjp")
@@ -568,30 +616,35 @@ initial_velocity_max = 19.11
 damping_max = 2.548
 color_ramp = SubResource("Gradient_cpprn")
 
+[node name="DamageSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3nw21")
+pitch_scale = 1.51
+bus = &"SFX"
+
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_v6ptx")
-volume_db = -21.693
+volume_db = -3.19
 max_polyphony = 10
 bus = &"SFXDream"
 
 [node name="DashSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_v3d1i")
-volume_db = -31.903
+volume_db = -7.658
 bus = &"SFXDream"
 
 [node name="ParryCharge" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_rov85")
-volume_db = -17.228
+volume_db = -6.766
 bus = &"SFX"
 
 [node name="ParrySuccess" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0iajw")
-volume_db = -31.903
+volume_db = -9.307
 bus = &"SFXFloat"
 
 [node name="ParryFail" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_12tnr")
-volume_db = -31.264
+volume_db = -10.208
 bus = &"SFXDream"
 
 [node name="Dash" type="AnimationPlayer" parent="."]
@@ -614,6 +667,19 @@ autoplay = "Fall"
 libraries = {
 "": SubResource("AnimationLibrary_1ktrq")
 }
+
+[node name="Attack" type="Area2D" parent="." groups=["attack"]]
+position = Vector2(0, 15)
+script = ExtResource("90_24wpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(26.5, 0)
+shape = SubResource("RectangleShape2D_sod1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="Attack"]
+position = Vector2(26.75, 0.375)
+scale = Vector2(0.253906, 0.0566406)
+texture = ExtResource("91_23w5b")
 
 [connection signal="area_entered" from="DamageDetector" to="." method="_on_damage_detector_area_entered"]
 [connection signal="finished" from="ParryCharge" to="." method="_on_parry_charge_finished"]

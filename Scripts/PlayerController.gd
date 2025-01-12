@@ -12,8 +12,8 @@ var footstep_timer = 0.0
 var save_dir = ""
 
 # stats
-var health : int = 10
-#var iinvenerability_
+var health : int = 100
+var damaged_invenerability_time : = 1.5
 
 # movement vars
 const SPEED = 75.0
@@ -24,6 +24,18 @@ const DEADZONE = 0.1
 @onready var ghost_scene = preload("res://Scenes/Ghost.tscn")
 
 var movement_disabled : bool = false
+
+# attack parameters
+const ATTACK_COOLDOWN = 0.4
+const ATTACK_MOUSE_DIST = 50.0
+
+@onready var attack_area = $Attack
+
+var attack_damage = 1
+var attack_disabled : bool = false
+var attack_dir : Vector2 = Vector2.RIGHT
+var attack_timer = 0.0
+
 # dash parameters
 const DASH_COOLDOWN = 0.15
 const DASH_TIME = 0.75
@@ -58,6 +70,7 @@ func _ready() -> void:
 	movement_disabled = true
 	#$Fall.play()
 	$ParryCharge.pitch_scale = 0.5/(PARRY_WIND_UP+PARRY_DURRATION)
+	attack_area.used = true
 	Global.player = self
 
 var ghost_timer = 0.0
@@ -78,6 +91,32 @@ func _physics_process(delta: float) -> void:
 	var dir = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"), 
 	Input.get_action_strength("down") - Input.get_action_strength("up")).normalized() 
 	dir = Global.run_memories("dir", dir)
+	
+	attack_area.damage = attack_damage
+	
+	if not attack_disabled and is_window_in_focus:
+		var mouse_direction = get_global_mouse_position() - get_viewport().size/2.0
+		if mouse_direction.length() > DEADZONE:
+			attack_dir = mouse_direction
+		
+		if mouse_direction.length() > ATTACK_MOUSE_DIST:
+			Input.warp_mouse(get_window().size/2.0 + mouse_direction.normalized() * ATTACK_MOUSE_DIST * 3.0)
+		
+	
+	if attack_timer > 0.0:
+		attack_timer -= delta
+	else:
+		$Attack/Sprite2D.hide()
+		attack_area.used = true
+			
+		#print("---")
+		#print(to_local(adjusted_mouse_pos).length())
+		#print(to_local(adjusted_mouse_pos))
+		#print(to_local(adjusted_mouse_pos).normalized() * ATTACK_MOUSE_DIST)
+		#print(to_global(to_local(adjusted_mouse_pos).normalized() * ATTACK_MOUSE_DIST))
+		#if to_local(adjusted_mouse_pos).length() > ATTACK_MOUSE_DIST:
+			#Input.warp_mouse(to_global(to_local(adjusted_mouse_pos).normalized() * ATTACK_MOUSE_DIST))
+	
 	
 	if movement_disabled: 
 		dir = Vector2.ZERO
@@ -110,8 +149,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = dash_direction * SPEED * DASH_SPEED_BONUS
 	
-	if invenerable_timer > 0: invenerable_timer -= delta
-	else: invenerable = false
+	if invenerable_timer > 0:
+		invenerable_timer -= delta
+	else: 
+		$Damage.stop()
+		invenerable = false
 	
 	if parry_timer >= 0.0:
 		parry_active = parry_timer <= PARRY_DURRATION + PARRY_COOLDOWN and parry_timer > PARRY_COOLDOWN
@@ -147,6 +189,12 @@ func _input(event: InputEvent) -> void:
 		$Sprite/Particles.emitting = true
 		Global.next_scene()
 	
+	if event.is_action_pressed("attack") and attack_timer <= 0 and not attack_disabled and not dashing and not parry_timer > 0:
+		$Attack/Sprite2D.show()
+		attack_area.used = false
+		attack_timer = ATTACK_COOLDOWN
+		attack_area.rotation = attack_dir.angle()
+	
 	
 	
 
@@ -168,11 +216,14 @@ func _on_damage_detector_area_entered(area: Area2D) -> void:
 		else:
 			Global.combo += Global.run_memories("parry_combo", PARRY_COMBO_BONUS)
 	
-	elif area.is_in_group("damage"):
+	elif area.is_in_group("damage") and not invenerable:
 		damage(Global.run_memories("damage", area.damage))
 
 func damage(ammount : int):
-	
+	invenerable_timer = damaged_invenerability_time
+	invenerable = true
+	$Damage.play("damage")
+	$DamageSound.play()
 	health -= ammount
 
 func _on_fall_animation_finished(anim_name: StringName) -> void:
@@ -186,3 +237,11 @@ func _on_parry_charge_finished() -> void:
 		parry_sucessful = false
 	else:
 		$ParryFail.play()
+
+var is_window_in_focus = true
+func _notification(what):
+	match what:
+		MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
+			is_window_in_focus = false
+		MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:
+			is_window_in_focus = true

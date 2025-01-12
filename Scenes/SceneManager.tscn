@@ -200,6 +200,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="drift" type="Control" parent="ScreenspaceEffects"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
