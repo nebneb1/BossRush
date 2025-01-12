@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cq4if74e4o0"]
+[gd_scene load_steps=23 format=3 uid="uid://cq4if74e4o0"]
 
 [ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_yju3l"]
 [ext_resource type="Shader" path="res://Shaders/Boss1.gdshader" id="2_0bq6s"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://oi173y6hdt62" path="res://Art/Sprites/Sparkles/star6.png" id="16_w6qkt"]
 [ext_resource type="Texture2D" uid="uid://bhl8716oiukoc" path="res://Art/Sprites/Sparkles/star7.png" id="17_jrsj6"]
 [ext_resource type="Texture2D" uid="uid://do5y60amdjumm" path="res://Art/Sprites/Sparkles/star8.png" id="18_y1an2"]
+[ext_resource type="Texture2D" uid="uid://5o6syqn13q43" path="res://Art/BackgroundsOrArenas/Test Background2.png" id="19_noe1r"]
+[ext_resource type="Script" path="res://Scripts/ComplexDamage.gd" id="19_x2sau"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4b2m2"]
 shader = ExtResource("2_0bq6s")
@@ -62,55 +64,78 @@ animations = [{
 [node name="Boss1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_yju3l")]
-position = Vector2(320, 331)
+position = Vector2(320, 302)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Ache" type="Node2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="Sprite" type="Node2D" parent="Ache"]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Ache/Sprite"]
 show_behind_parent = true
+z_index = 1
 material = SubResource("ShaderMaterial_4b2m2")
-position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_fp1gg")
 autoplay = "default"
 frame_progress = 0.913644
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ache/Sprite"]
 clip_children = 2
+z_index = 1
 material = SubResource("ShaderMaterial_4b2m2")
-position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_fp1gg")
 autoplay = "default"
-frame_progress = 0.913644
+frame_progress = 0.582734
 
-[node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]
+[node name="Node2D" type="Node2D" parent="Ache/Sprite/AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
 
-[node name="CPUParticles2D" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 
-[node name="CPUParticles2D2" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D2" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 texture = ExtResource("12_isklt")
 
-[node name="CPUParticles2D3" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D3" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 texture = ExtResource("13_jbabe")
 
-[node name="CPUParticles2D4" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D4" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 texture = ExtResource("14_xf0lf")
 
-[node name="CPUParticles2D5" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D5" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 
-[node name="CPUParticles2D6" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D6" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 texture = ExtResource("15_bctxj")
 
-[node name="CPUParticles2D7" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D7" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 visible = false
 texture = ExtResource("16_w6qkt")
 
-[node name="CPUParticles2D8" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D8" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 visible = false
 texture = ExtResource("17_jrsj6")
 
-[node name="CPUParticles2D9" parent="AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
+[node name="CPUParticles2D9" parent="Ache/Sprite/AnimatedSprite2D/Node2D" instance=ExtResource("11_ndilc")]
 texture = ExtResource("18_y1an2")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="Damage" type="Area2D" parent="Ache" node_paths=PackedStringArray("collision_sprite") groups=["damage"]]
+script = ExtResource("19_x2sau")
+collision_sprite = NodePath("../Sprite/AnimatedSprite2D")
+epsilon = 2
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="TestBackground2" type="Sprite2D" parent="Arena"]
+z_index = -2808
+position = Vector2(320, 180)
+texture = ExtResource("19_noe1r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arena/StaticBody2D"]
+visible = false
+polygon = PackedVector2Array(85, 360, 542, 360, 544, 115, 86, 115, 86, 359, 82, 422, 55, 337, 46, 65, 596, 66, 593, 399, 84, 421)

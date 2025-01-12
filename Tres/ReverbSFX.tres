@@ -1,0 +1,6 @@
+[gd_resource type="AudioEffectReverb" format=3 uid="uid://mg7u1t3njl5i"]
+
+[resource]
+resource_name = "Reverb"
+damping = 0.72
+wet = 0.23

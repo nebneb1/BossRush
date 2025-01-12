@@ -8,7 +8,7 @@ void vertex() {
 void fragment() {
 	vec4 pixelColor = texture(SCREEN_TEXTURE, SCREEN_UV);
 	vec4 original = pixelColor;
-	pixelColor = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + sin(TIME)*pixelColor.g, SCREEN_UV.y + cos(sin(TIME))*pixelColor.r));
+	pixelColor = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + sin(TIME)*pixelColor.g, SCREEN_UV.y + cos(sin(TIME))*pixelColor.r + cos(TIME/10.0)/2.0));
 	
 	pixelColor *= 2.0;
 	original *= 2.0;

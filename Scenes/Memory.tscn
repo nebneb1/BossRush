@@ -1,9 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://blb4140pjaktn"]
+[gd_scene load_steps=21 format=3 uid="uid://blb4140pjaktn"]
 
 [ext_resource type="Script" path="res://Scripts/Memory.gd" id="1_gr1xf"]
 [ext_resource type="Texture2D" uid="uid://q7ahsl41jt8k" path="res://Art/Sprites/Sparkles/star1.png" id="1_pbqaq"]
 [ext_resource type="FontFile" uid="uid://c2uo4xv5s585d" path="res://Fonts/GrapeSoda.ttf" id="2_s6awp"]
 [ext_resource type="Script" path="res://Fonts/Effects/rte_wack.gd" id="3_ttcxt"]
+[ext_resource type="AudioStream" uid="uid://dholsaktenjcu" path="res://Audio/SFX/DREAM-SFX-Purchase.wav" id="5_rjqej"]
+[ext_resource type="AudioStream" uid="uid://bvjr47xfjm5hq" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph2.wav" id="6_0gcwd"]
+[ext_resource type="AudioStream" uid="uid://cs7w1yqjvrmg4" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph4.wav" id="6_ouav8"]
+[ext_resource type="AudioStream" uid="uid://db1ro6vhagweo" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph1.wav" id="7_tpjnp"]
+[ext_resource type="AudioStream" uid="uid://f7fceiccg3y1" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph5.wav" id="9_6w2tm"]
 
 [sub_resource type="Animation" id="Animation_wayjl"]
 length = 0.001
@@ -150,6 +155,23 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 0, 1, 0), Color(1, 0, 1, 0.0705882), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"hover_play_sound"
+}, {
+"args": [],
+"method": &"hover_play_sound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p8ckx"]
 _data = {
@@ -168,6 +190,31 @@ script = ExtResource("3_ttcxt")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0t66"]
 radius = 14.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eayqw"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_rjqej")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g5xwe"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_ouav8")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jfyd5"]
+random_pitch = 1.2
+streams_count = 4
+stream_0/stream = ExtResource("7_tpjnp")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_0gcwd")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_ouav8")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_6w2tm")
+stream_3/weight = 1.0
 
 [node name="Memory" type="Node2D"]
 script = ExtResource("1_gr1xf")
@@ -245,6 +292,25 @@ custom_effects = [SubResource("RichTextEffect_vxb1x")]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_v0t66")
+
+[node name="Purchase" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_eayqw")
+volume_db = -23.131
+pitch_scale = 2.39
+bus = &"SFXDream"
+
+[node name="Spawn" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_g5xwe")
+volume_db = -24.0
+pitch_scale = 4.0
+bus = &"SFXDream"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_jfyd5")
+volume_db = -21.072
+pitch_scale = 0.24
+max_polyphony = 3
+bus = &"SFXDream"
 
 [connection signal="mouse_entered" from="VBoxContainer/Icon" to="." method="_on_texture_rect_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Icon" to="." method="_on_texture_rect_mouse_exited"]

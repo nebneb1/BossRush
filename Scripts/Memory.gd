@@ -23,6 +23,8 @@ func _ready() -> void:
 	$VBoxContainer/Description.text = "[center][tornado radius=1.0][color=plum]" + description
 	$VBoxContainer/Cost.text = "[center][tornado radius=1.0][color=pink]" + str(cost) + " Score"
 	if icon: $VBoxContainer/Icon.texture = icon
+	$Spawn.pitch_scale = 4.0 + index/10.0
+	$Spawn.play()
 
 func _process(delta: float) -> void:
 	if not enabled and not deleting:
@@ -68,7 +70,12 @@ func mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_purchase") and Global.active_hover == self and Global.score >= cost and memory_name != "placeholder":
+		$Purchase.play()
 		Global.score -= cost
 		Global.add_memory(memory_name)
 		get_node("../../").delete_memory(index)
 		delete()
+
+func hover_play_sound():
+	if Global.active_hover == self:
+		$Hover.play()

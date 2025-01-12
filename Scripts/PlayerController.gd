@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+# audio
+const FOOTSTEP_TIME = 0.3
+@export var footstep_player : AudioStreamPlayer
+
+
+var footstep_timer = 0.0
 
 # anims
 @onready var animations = $Sprite
@@ -7,6 +13,7 @@ var save_dir = ""
 
 # stats
 var health : int = 10
+#var iinvenerability_
 
 # movement vars
 const SPEED = 75.0
@@ -40,6 +47,7 @@ const DASH_PARRY_COMBO_BONUS = 2.0
 
 var parry_timer = 0.0
 var parry_active = false
+var parry_sucessful = true
 
 # effect vars
 var invenerable_timer = 0.0
@@ -49,6 +57,7 @@ func _ready() -> void:
 	#Global.add_memory(0)
 	movement_disabled = true
 	#$Fall.play()
+	$ParryCharge.pitch_scale = 0.5/(PARRY_WIND_UP+PARRY_DURRATION)
 	Global.player = self
 
 var ghost_timer = 0.0
@@ -84,6 +93,12 @@ func _physics_process(delta: float) -> void:
 			get_parent().add_child(inst)
 			ghost_timer -= GHOST_TIME
 	
+	if abs(dir.length()) > DEADZONE:
+		footstep_timer += delta
+		if footstep_timer >= FOOTSTEP_TIME:
+			footstep_timer -= FOOTSTEP_TIME
+			footstep_player.play()
+	
 	if not dashing:
 		if dash_cooldown_timer >= 0: dash_cooldown_timer -= delta
 		
@@ -116,9 +131,11 @@ func _input(event: InputEvent) -> void:
 		dashing = true
 		invenerable = true
 		dash_animation.speed_scale = 1/DASH_TIME
+		$DashSound.play()
 		dash_animation.play("dash")
 
 	if event.is_action_pressed("parry") and dash_cooldown_timer <= 0.0 and parry_timer <= 0.0:
+		$ParryCharge.play()
 		parry_timer = PARRY_WIND_UP + PARRY_DURRATION + PARRY_COOLDOWN
 		parry_animation.play("parry_charge")
 		parry_animation.speed_scale = 1/PARRY_WIND_UP
@@ -145,15 +162,27 @@ func _on_animation_finished(anim_name: StringName) -> void:
 
 func _on_damage_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("parry") and parry_active:
+		parry_sucessful = true
 		if dashing or dash_cooldown_timer >= 0.001:
 			Global.combo += Global.run_memories("parry_combo", DASH_PARRY_COMBO_BONUS)
 		else:
 			Global.combo += Global.run_memories("parry_combo", PARRY_COMBO_BONUS)
 	
 	elif area.is_in_group("damage"):
-		health -= Global.run_memories("damage", area.damage)
+		damage(Global.run_memories("damage", area.damage))
 
+func damage(ammount : int):
+	
+	health -= ammount
 
 func _on_fall_animation_finished(anim_name: StringName) -> void:
 	movement_disabled = false
 	$Sprite/Particles.emitting = false
+
+
+func _on_parry_charge_finished() -> void:
+	if parry_sucessful:
+		$ParrySuccess.play()
+		parry_sucessful = false
+	else:
+		$ParryFail.play()

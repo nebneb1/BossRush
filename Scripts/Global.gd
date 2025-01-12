@@ -6,7 +6,7 @@ var score : int = 10000
 var player : CharacterBody2D
 var main : Control
 
-const SCENE_SEQUENCE = ["shop", "ache"]
+const SCENE_SEQUENCE = ["ache","shop"]
 var next_scenes = SCENE_SEQUENCE.duplicate()
 
 const PRICE_RANGES : Dictionary = {

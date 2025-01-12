@@ -144,7 +144,6 @@ mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/melted2"]
 texture_filter = 1
-texture_repeat = 3
 material = SubResource("ShaderMaterial_o7jsj")
 layout_mode = 1
 anchors_preset = 15
@@ -201,7 +200,6 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="drift" type="Control" parent="ScreenspaceEffects"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

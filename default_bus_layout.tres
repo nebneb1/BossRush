@@ -1,0 +1,68 @@
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bguc06w1wf2pr"]
+
+[ext_resource type="AudioEffectReverb" uid="uid://mg7u1t3njl5i" path="res://Tres/ReverbSFX.tres" id="1_t8w4i"]
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_gdtl1"]
+resource_name = "Chorus"
+voice_count = 4
+dry = 0.0
+wet = 1.0
+voice/1/delay_ms = 23.6
+voice/1/rate_hz = 4.5
+voice/2/delay_ms = 7.26
+voice/2/rate_hz = 8.6
+voice/3/delay_ms = 3.39
+voice/3/rate_hz = 7.9
+voice/3/depth_ms = 0.0
+voice/3/level_db = 0.0
+voice/3/cutoff_hz = 16000.0
+voice/3/pan = 0.0
+voice/4/delay_ms = 16.97
+voice/4/rate_hz = 2.6
+voice/4/depth_ms = 0.0
+voice/4/level_db = 0.0
+voice/4/cutoff_hz = 16000.0
+voice/4/pan = 0.0
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_fp7gn"]
+resource_name = "Delay"
+tap1_delay_ms = 355.0
+tap1_level_db = -13.0
+tap2_active = false
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_aj0ud"]
+resource_name = "Reverb"
+
+[resource]
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"SFXDream"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = ExtResource("1_t8w4i")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectChorus_gdtl1")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectDelay_fp7gn")
+bus/3/effect/2/enabled = true
+bus/4/name = &"SFXFloat"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_aj0ud")
+bus/4/effect/0/enabled = true
