@@ -6,7 +6,8 @@ const HUE_VARIATION = 0.1
 var rotation_speed = randfn(0, 1.0)
 var yvel = -randf_range(50, 300)/5
 var xvel = randf_range(-25, 25)/5
-var color : Color = Color.DARK_MAGENTA
+#var color : Color = Color.DARK_MAGENTA
+var color : Color = Color.DARK_BLUE
 func _ready() -> void:
 	color.h += randf_range(-HUE_VARIATION, HUE_VARIATION)
 	color.a = 0.5

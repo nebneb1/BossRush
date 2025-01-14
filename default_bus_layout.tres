@@ -1,6 +1,13 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bguc06w1wf2pr"]
+[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://bguc06w1wf2pr"]
 
 [ext_resource type="AudioEffectReverb" uid="uid://mg7u1t3njl5i" path="res://Tres/ReverbSFX.tres" id="1_t8w4i"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_3xe63"]
+resource_name = "Limiter"
+ceiling_db = -11.3
+threshold_db = -3.6
+soft_clip_db = 3.5
+soft_clip_ratio = 14.7
 
 [sub_resource type="AudioEffectChorus" id="AudioEffectChorus_gdtl1"]
 resource_name = "Chorus"
@@ -30,11 +37,18 @@ tap1_delay_ms = 355.0
 tap1_level_db = -13.0
 tap2_active = false
 
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_e2cxv"]
+resource_name = "StereoEnhance"
+time_pullout_ms = 1.78
+surround = 0.26
+
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_aj0ud"]
 resource_name = "Reverb"
 
 [resource]
 bus/0/volume_db = 0.0694828
+bus/0/effect/0/effect = SubResource("AudioEffectLimiter_3xe63")
+bus/0/effect/0/enabled = false
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
@@ -59,6 +73,8 @@ bus/3/effect/1/effect = SubResource("AudioEffectChorus_gdtl1")
 bus/3/effect/1/enabled = true
 bus/3/effect/2/effect = SubResource("AudioEffectDelay_fp7gn")
 bus/3/effect/2/enabled = true
+bus/3/effect/3/effect = SubResource("AudioEffectStereoEnhance_e2cxv")
+bus/3/effect/3/enabled = true
 bus/4/name = &"SFXFloat"
 bus/4/solo = false
 bus/4/mute = false

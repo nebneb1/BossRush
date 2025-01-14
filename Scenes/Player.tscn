@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bi8h22q1ndvov"]
+[gd_scene load_steps=121 format=3 uid="uid://bi8h22q1ndvov"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_pghjp"]
 [ext_resource type="Shape2D" uid="uid://bomf5n6isyjyv" path="res://Tres/PlayerHitbox.tres" id="2_yjmjc"]
@@ -90,7 +90,11 @@
 [ext_resource type="AudioStream" uid="uid://do267iaknbboq" path="res://Audio/SFX/DREAM-SFX-ParrySucess1.wav" id="83_2l85h"]
 [ext_resource type="AudioStream" uid="uid://bhy0ax4ivg3kn" path="res://Audio/SFX/DREAM-SFX-ParrySucess2.wav" id="84_2nucx"]
 [ext_resource type="Script" path="res://Scripts/SimpleDamage.gd" id="90_24wpj"]
+[ext_resource type="AudioStream" uid="uid://c6jayoogubj4q" path="res://Audio/SFX/DREAM-SFX-Swing1.wav" id="90_l3ee1"]
 [ext_resource type="Texture2D" uid="uid://vsuffuwpceuu" path="res://icon.svg" id="91_23w5b"]
+[ext_resource type="AudioStream" uid="uid://dljojcfvrmq26" path="res://Audio/SFX/DREAM-SFX-Swing2.wav" id="91_co776"]
+[ext_resource type="AudioStream" uid="uid://dgxr7wbh0kh23" path="res://Audio/SFX/DREAM-SFX-Swing3.wav" id="92_1wluy"]
+[ext_resource type="AudioStream" uid="uid://wr42dabjrcpl" path="res://Audio/SFX/DREAM-SFX-Swing4.wav" id="93_4mpd5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ijs6a"]
 shader = ExtResource("3_lqhjc")
@@ -426,6 +430,18 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("81_bewk7")
 stream_1/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_phv5o"]
+random_pitch = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("90_l3ee1")
+stream_0/weight = 34.043
+stream_1/stream = ExtResource("91_co776")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("92_1wluy")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("93_4mpd5")
+stream_3/weight = 1.0
+
 [sub_resource type="Animation" id="Animation_xopfe"]
 length = 0.001
 
@@ -537,6 +553,21 @@ _data = {
 "RESET": SubResource("Animation_mpwdn")
 }
 
+[sub_resource type="Animation" id="Animation_d4mqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_q6kyq"]
 resource_name = "damage"
 length = 0.4
@@ -554,21 +585,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.298039), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_d4mqh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ktrq"]
 _data = {
 "RESET": SubResource("Animation_d4mqh"),
@@ -579,6 +595,7 @@ _data = {
 size = Vector2(33, 7)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstep_player") groups=["player"]]
+z_index = 6
 script = ExtResource("1_pghjp")
 footstep_player = NodePath("Footstep")
 
@@ -619,32 +636,43 @@ color_ramp = SubResource("Gradient_cpprn")
 [node name="DamageSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_3nw21")
 pitch_scale = 1.51
+max_polyphony = 6
 bus = &"SFX"
 
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_v6ptx")
-volume_db = -3.19
 max_polyphony = 10
 bus = &"SFXDream"
 
 [node name="DashSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_v3d1i")
 volume_db = -7.658
+max_polyphony = 6
 bus = &"SFXDream"
 
 [node name="ParryCharge" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_rov85")
 volume_db = -6.766
+max_polyphony = 6
 bus = &"SFX"
 
 [node name="ParrySuccess" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0iajw")
 volume_db = -9.307
+max_polyphony = 6
 bus = &"SFXFloat"
 
 [node name="ParryFail" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_12tnr")
 volume_db = -10.208
+max_polyphony = 6
+bus = &"SFXDream"
+
+[node name="Swing" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_phv5o")
+volume_db = -12.122
+pitch_scale = 6.0
+max_polyphony = 6
 bus = &"SFXDream"
 
 [node name="Dash" type="AnimationPlayer" parent="."]

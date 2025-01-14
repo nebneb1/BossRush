@@ -1,7 +1,165 @@
-[gd_scene load_steps=2 format=3 uid="uid://jkqvjpdi3pqo"]
+[gd_scene load_steps=16 format=3 uid="uid://bxyarcvptsx20"]
 
-[ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_r6cx2"]
+[ext_resource type="Shader" path="res://Shaders/ParticleFromAnimSprite.gdshader" id="1_o0cy6"]
+[ext_resource type="Texture2D" uid="uid://bjnwkvqnkkx5d" path="res://Art/Sprites/Sprite-0002/frame_7_delay-0.1s.png" id="2_s2jxw"]
+[ext_resource type="Script" path="res://Scripts/InfAnimation.gd" id="3_5h8tb"]
+[ext_resource type="Texture2D" uid="uid://buf5wl0ukmvox" path="res://Art/Sprites/Sprite-0002/frame_0_delay-0.1s.png" id="4_geeuh"]
+[ext_resource type="Texture2D" uid="uid://brjwuyw0gug87" path="res://Art/Sprites/Sprite-0002/frame_1_delay-0.1s.png" id="5_pqkr4"]
+[ext_resource type="Texture2D" uid="uid://cy65n5bludjfm" path="res://Art/Sprites/Sprite-0002/frame_2_delay-0.1s.png" id="6_hyvur"]
+[ext_resource type="Texture2D" uid="uid://chkciqr4wist8" path="res://Art/Sprites/Sprite-0002/frame_3_delay-0.1s.png" id="7_sm1jp"]
+[ext_resource type="Texture2D" uid="uid://dek083vg7x5y1" path="res://Art/Sprites/Sprite-0002/frame_4_delay-0.1s.png" id="8_av664"]
+[ext_resource type="Texture2D" uid="uid://dv4kjtxdsnghh" path="res://Art/Sprites/Sprite-0002/frame_5_delay-0.1s.png" id="9_4e5pj"]
+[ext_resource type="Texture2D" uid="uid://bdao3mxu7rqrv" path="res://Art/Sprites/Sprite-0002/frame_6_delay-0.1s.png" id="10_d6xxj"]
+[ext_resource type="Shader" path="res://Shaders/Smoke3.gdshader" id="11_s52d6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp4pe"]
+resource_local_to_scene = true
+shader = ExtResource("1_o0cy6")
+shader_parameter/direction = Vector3(0, -1, 0)
+shader_parameter/spread = 180.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = -4.08
+shader_parameter/linear_accel_max = 5.44
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.28
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 0.1
+shader_parameter/scale_max = 0.3
+shader_parameter/hue_variation_min = -1.0
+shader_parameter/hue_variation_max = 1.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/emission_scale = Vector2(640, 360)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_texture_point_count = 669
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/gravity = Vector3(0, -1e-06, 0)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.14
+shader_parameter/turbulence_noise_strength = 20.0
+shader_parameter/turbulence_noise_scale = -1.16313
+shader_parameter/turbulence_influence_min = 0.1
+shader_parameter/turbulence_influence_max = 0.1
+shader_parameter/turbulence_initial_displacement_min = 0.0
+shader_parameter/turbulence_initial_displacement_max = 0.0
+shader_parameter/turbulence_noise_speed_random = 0.2
+shader_parameter/turbulence_noise_speed = Vector3(0, 0, 0)
+shader_parameter/emission_mask = ExtResource("2_s2jxw")
+shader_parameter/emission_texture_points = ExtResource("2_s2jxw")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wmti7"]
+load_path = "res://.godot/imported/smoke.png-97468c0271fb32bf7aa83a88c4428725.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kam6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_geeuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pqkr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hyvur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sm1jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_av664")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4e5pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d6xxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s2jxw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bk6m"]
+shader = ExtResource("11_s52d6")
+shader_parameter/weird = 1.625
+shader_parameter/default_color = Color(0.247059, 0.0509804, 0.462745, 1)
+shader_parameter/default_color_threshold = 0.045
+shader_parameter/colors = PackedColorArray(1, 0, 0, 1, 1, 0.717647, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0.788235, 0, 1, 1, 0.580392, 0.243137, 1, 1)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_r6cx2")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = -9
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(0.984314, 0.101961, 1, 0.0196078)
+self_modulate = Color(0, 0.972549, 0.992157, 1)
+z_index = -11
+position = Vector2(320, 183)
+amount = 2031
+process_material = SubResource("ShaderMaterial_wp4pe")
+texture = SubResource("CompressedTexture2D_wmti7")
+preprocess = 5.0
+collision_base_size = 0.3
+trail_lifetime = 1.96
+script = ExtResource("3_5h8tb")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/GPUParticles2D2"]
+size = Vector2i(640, 360)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport/GPUParticles2D2/SubViewport"]
+show_behind_parent = true
+z_index = 1
+position = Vector2(160, 90)
+sprite_frames = SubResource("SpriteFrames_kam6f")
+autoplay = "default"
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport"]
+z_index = -10
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D"]
+material = SubResource("ShaderMaterial_3bk6m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

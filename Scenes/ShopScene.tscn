@@ -1,23 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bagt08ca3cu7q"]
+[gd_scene load_steps=9 format=3 uid="uid://bagt08ca3cu7q"]
 
 [ext_resource type="PackedScene" uid="uid://b08yvcm8vbur8" path="res://Scenes/Shop.tscn" id="1_7d5oj"]
-[ext_resource type="PackedScene" uid="uid://cgi557a0c1lss" path="res://Scenes/Smoke.tscn" id="2_esoyg"]
+[ext_resource type="Material" uid="uid://n7x8pjdn2vn" path="res://Tres/SmokeParticleSystem.tres" id="2_2yaic"]
 [ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="3_ipni0"]
+[ext_resource type="Texture2D" uid="uid://bbqktf3j7bibp" path="res://TechAssets/smoke.png" id="3_yiw3x"]
+[ext_resource type="Script" path="res://Scripts/InfAnimation.gd" id="4_sfnl8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhkrp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4kfi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb5tm"]
 shader = ExtResource("3_ipni0")
-shader_parameter/colors = PackedColorArray(0.317647, 0.054902, 0.360784, 1, 0.0980392, 0, 0.0117647, 1, 0.215686, 0, 0.286275, 1, 0.364706, 0, 0.529412, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+shader_parameter/colors = PackedColorArray(0.533333, 0, 0.643137, 1, 0.196078, 0, 0.243137, 1, 0.113725, 0, 0.145098, 1, 0.00784314, 0, 0.117647, 1)
+
+[sub_resource type="Environment" id="Environment_wg1mt"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Shop" parent="." instance=ExtResource("1_7d5oj")]
 
-[node name="Smoke" parent="." instance=ExtResource("2_esoyg")]
+[node name="Smoke" type="Node2D" parent="."]
 
-[node name="GPUParticles2D2" parent="Smoke" index="0"]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Smoke"]
 modulate = Color(1, 0.341176, 0.780392, 0.0235294)
+z_index = -11
+material = SubResource("ShaderMaterial_u4kfi")
+position = Vector2(320, 183)
+amount = 5083
+process_material = ExtResource("2_2yaic")
+texture = ExtResource("3_yiw3x")
+lifetime = 12.46
+collision_base_size = 0.3
+trail_lifetime = 1.96
+script = ExtResource("4_sfnl8")
 
-[node name="ColorRect" parent="Smoke/Node2D" index="0"]
-material = SubResource("ShaderMaterial_nhkrp")
+[node name="Node2D" type="Node2D" parent="Smoke"]
+z_index = -10
 
-[editable path="Smoke"]
+[node name="ColorRect" type="ColorRect" parent="Smoke/Node2D"]
+material = SubResource("ShaderMaterial_mb5tm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wg1mt")

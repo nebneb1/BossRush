@@ -26,8 +26,9 @@ const DEADZONE = 0.1
 var movement_disabled : bool = false
 
 # attack parameters
-const ATTACK_COOLDOWN = 0.4
-const ATTACK_MOUSE_DIST = 50.0
+const ATTACK_COOLDOWN = 0.5
+const  ATTACK_TIME = 0.1
+const ATTACK_MOUSE_DIST = 7.0
 
 @onready var attack_area = $Attack
 
@@ -95,27 +96,23 @@ func _physics_process(delta: float) -> void:
 	attack_area.damage = attack_damage
 	
 	if not attack_disabled and is_window_in_focus:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 		var mouse_direction = get_global_mouse_position() - get_viewport().size/2.0
 		if mouse_direction.length() > DEADZONE:
 			attack_dir = mouse_direction
 		
 		if mouse_direction.length() > ATTACK_MOUSE_DIST:
 			Input.warp_mouse(get_window().size/2.0 + mouse_direction.normalized() * ATTACK_MOUSE_DIST * 3.0)
-		
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	if attack_timer > 0.0:
 		attack_timer -= delta
+		if attack_timer < ATTACK_COOLDOWN - ATTACK_TIME:
+			attack_area.used = true
 	else:
 		$Attack/Sprite2D.hide()
-		attack_area.used = true
-			
-		#print("---")
-		#print(to_local(adjusted_mouse_pos).length())
-		#print(to_local(adjusted_mouse_pos))
-		#print(to_local(adjusted_mouse_pos).normalized() * ATTACK_MOUSE_DIST)
-		#print(to_global(to_local(adjusted_mouse_pos).normalized() * ATTACK_MOUSE_DIST))
-		#if to_local(adjusted_mouse_pos).length() > ATTACK_MOUSE_DIST:
-			#Input.warp_mouse(to_global(to_local(adjusted_mouse_pos).normalized() * ATTACK_MOUSE_DIST))
+		
 	
 	
 	if movement_disabled: 
@@ -165,7 +162,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and dash_cooldown_timer <= 0.0:
 		dash_cooldown_timer = DASH_COOLDOWN
@@ -190,6 +186,11 @@ func _input(event: InputEvent) -> void:
 		Global.next_scene()
 	
 	if event.is_action_pressed("attack") and attack_timer <= 0 and not attack_disabled and not dashing and not parry_timer > 0:
+		if event.is_action_pressed("attack_up"): attack_dir = Vector2.UP
+		elif event.is_action_pressed("attack_down"): attack_dir = Vector2.DOWN
+		elif event.is_action_pressed("attack_left"): attack_dir = Vector2.LEFT
+		elif event.is_action_pressed("attack_right"): attack_dir = Vector2.RIGHT
+		$Swing.play()
 		$Attack/Sprite2D.show()
 		attack_area.used = false
 		attack_timer = ATTACK_COOLDOWN
@@ -225,6 +226,7 @@ func damage(ammount : int):
 	$Damage.play("damage")
 	$DamageSound.play()
 	health -= ammount
+
 
 func _on_fall_animation_finished(anim_name: StringName) -> void:
 	movement_disabled = false

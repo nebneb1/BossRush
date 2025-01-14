@@ -9,6 +9,10 @@ var main : Control
 const SCENE_SEQUENCE = ["ache","shop"]
 var next_scenes = SCENE_SEQUENCE.duplicate()
 
+const BOSS_HEALTH : Dictionary = {
+	"ache" : 10
+}
+
 const PRICE_RANGES : Dictionary = {
 	"common": [50, 100],
 	"rare": [150, 225],

@@ -37,7 +37,7 @@ void fragment() {
 	//Doesn'[t apply effect outside of circle]
 	// + mix(texture(SCREEN_TEXTURE, SCREEN_UV + disp), c, max_blend * 2.0 * (0.5-distFromCen(UV))) * distFromCen(UV) 
 	// texture(SCREEN_TEXTURE, SCREEN_UV)
-	float balance = pow(distFromCen(UV)-0.1, 0.75);
+	float balance = distFromCen(UV);
 	//if balance >
-	COLOR = mix(texture(SCREEN_TEXTURE, SCREEN_UV + disp), c, max_blend) * balance * 1.5;
+	COLOR = mix(texture(SCREEN_TEXTURE, SCREEN_UV + disp), c, max_blend) * balance * 1.5 + texture(SCREEN_TEXTURE, SCREEN_UV);
 }

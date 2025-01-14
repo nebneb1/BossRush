@@ -2,14 +2,16 @@
 
 [ext_resource type="Material" uid="uid://n7x8pjdn2vn" path="res://Tres/SmokeParticleSystem.tres" id="1_is8tl"]
 [ext_resource type="Texture2D" uid="uid://bbqktf3j7bibp" path="res://TechAssets/smoke.png" id="1_m7ooh"]
-[ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="2_8g02j"]
 [ext_resource type="Script" path="res://Scripts/InfAnimation.gd" id="3_ygo85"]
+[ext_resource type="Shader" path="res://Shaders/smoke2.gdshader" id="4_j0lrb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4kfi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ob2g"]
-shader = ExtResource("2_8g02j")
-shader_parameter/colors = PackedColorArray(0.768627, 0.317647, 0.847059, 1, 0.309804, 0.152941, 0.992157, 1, 0.207843, 0.843137, 0.866667, 1, 0.854593, 0.113608, 0.26654, 1, 0.615686, 0, 0.792157, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+shader = ExtResource("4_j0lrb")
+shader_parameter/transparent = false
+shader_parameter/transparent_thresh = null
+shader_parameter/add_color = false
 
 [node name="Smoke" type="Node2D"]
 

@@ -15,6 +15,7 @@ var player_in_radius = false
 
 func _ready() -> void:
 	randomize()
+	Global.player.attack_disabled = true
 	generate_memories()
 
 func generate_memories():

@@ -10,7 +10,7 @@ shader = ExtResource("1_vfx5h")
 shader_parameter/GhostColor = Color(0, 0, 0.462745, 1)
 
 [node name="Ghost" type="Sprite2D"]
-z_index = -9
+z_index = 5
 material = SubResource("ShaderMaterial_7deqw")
 texture = ExtResource("2_m4lub")
 script = ExtResource("1_bsrc5")
