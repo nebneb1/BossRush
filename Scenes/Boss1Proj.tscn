@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsq041foefouq"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_db6i5"]
+[ext_resource type="Shader" path="res://Shaders/Boss1.gdshader" id="1_gfhux"]
+[ext_resource type="Texture2D" uid="uid://caese3m7fcuu8" path="res://TechAssets/boss1proj/proj1.png" id="2_ad6qp"]
+[ext_resource type="Texture2D" uid="uid://cnlaoh5p4t1br" path="res://TechAssets/boss1proj/proj2.png" id="3_6fspx"]
+[ext_resource type="Texture2D" uid="uid://biq2jh4sdpujl" path="res://TechAssets/boss1proj/proj3.png" id="4_gxqsd"]
+[ext_resource type="Texture2D" uid="uid://ldyg7ky3bpy" path="res://TechAssets/boss1proj/proj4.png" id="5_81gfk"]
+[ext_resource type="Texture2D" uid="uid://bhl8716oiukoc" path="res://Art/Sprites/Sparkles/star7.png" id="6_cigbb"]
+[ext_resource type="Script" path="res://Scripts/SimpleDamage.gd" id="7_u2k58"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p45v1"]
+shader = ExtResource("1_gfhux")
+shader_parameter/goop_mask_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = Color(0, 0, 0, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.098
+shader_parameter/ymult = 0.928
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kobr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ad6qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6fspx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gxqsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_81gfk")
+}],
+"loop": true,
+"name": &"anim",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6y3q"]
+size = Vector2(10, 5)
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(-1, 1)
+script = ExtResource("1_db6i5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_p45v1")
+sprite_frames = SubResource("SpriteFrames_kobr7")
+animation = &"anim"
+autoplay = "anim"
+frame = 1
+frame_progress = 0.756533
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+z_index = 2
+material = SubResource("ShaderMaterial_p45v1")
+sprite_frames = SubResource("SpriteFrames_kobr7")
+animation = &"anim"
+autoplay = "anim"
+frame = 1
+frame_progress = 0.756533
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D2"]
+position = Vector2(-5, 0)
+amount = 3
+texture = ExtResource("6_cigbb")
+emission_shape = 1
+emission_sphere_radius = 11.42
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 54.3
+
+[node name="Area2D" type="Area2D" parent="." groups=["damage", "parry"]]
+script = ExtResource("7_u2k58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f6y3q")

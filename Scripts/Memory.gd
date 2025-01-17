@@ -21,8 +21,13 @@ var try_again = false
 
 func _ready() -> void:
 	for constant in consts.keys(): description = description.replace("[" + constant + "]", str(consts[constant]))
-	
-	$VBoxContainer/Name.text = "[center][tornado radius=5.0][color=pale_turquoise]" + memory_name
+	match rarity:
+		"common":
+			$VBoxContainer/Name.text = "[center][tornado radius=5.0][color=dark_gray]" + memory_name
+		"rare":
+			$VBoxContainer/Name.text = "[center][tornado radius=5.0][color=pale_turquoise]" + memory_name
+		"legendary":
+			$VBoxContainer/Name.text = "[center][tornado radius=5.0][color=crimson]" + memory_name
 	$VBoxContainer/Description.text = "[center][tornado radius=0.1][color=plum]" + description
 	$VBoxContainer/Cost.text = "[center][tornado radius=1.0][color=pink]" + str(cost) + " Points"
 	if icon: $VBoxContainer/Icon.texture = icon

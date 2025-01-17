@@ -6,8 +6,9 @@ uniform vec4 goop_background_color : source_color;
 
 uniform vec3 outline_color: source_color;
 uniform float progress: hint_range(0.0, 1.0);
-const float width = 0.00263;
-const float ymult = 2.108;
+uniform sampler2D noise;
+uniform float width = 0.00263;
+uniform float ymult = 2.108;
 
 bool is_goop(vec4 color){
 	return distance(color.rgb, goop_mask_color.rgb) < tolerance;

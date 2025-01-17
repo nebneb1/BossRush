@@ -76,7 +76,7 @@ func _ready() -> void:
 	Global.player = self
 
 var ghost_timer = 0.0
-const GHOST_TIME = 0.01
+const GHOST_TIME = 0.1
 
 func set_anim(_dir: Vector2):
 	if Input.is_action_pressed("left"): save_dir = "left"
