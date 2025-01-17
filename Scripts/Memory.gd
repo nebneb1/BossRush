@@ -6,6 +6,7 @@ var rarity = "common"
 var icon : Resource
 var cost = 100
 var index = 0
+var consts : Dictionary
 
 const SPEED = 4.0
 const HOVER_RADIUS = 14.0
@@ -19,9 +20,11 @@ var mouse_in_radius = false
 var try_again = false
 
 func _ready() -> void:
+	for constant in consts.keys(): description = description.replace("[" + constant + "]", str(consts[constant]))
+	
 	$VBoxContainer/Name.text = "[center][tornado radius=5.0][color=pale_turquoise]" + memory_name
-	$VBoxContainer/Description.text = "[center][tornado radius=1.0][color=plum]" + description
-	$VBoxContainer/Cost.text = "[center][tornado radius=1.0][color=pink]" + str(cost) + " Score"
+	$VBoxContainer/Description.text = "[center][tornado radius=0.1][color=plum]" + description
+	$VBoxContainer/Cost.text = "[center][tornado radius=1.0][color=pink]" + str(cost) + " Points"
 	if icon: $VBoxContainer/Icon.texture = icon
 	$Spawn.pitch_scale = 4.0 + index/10.0
 	$Spawn.play()
@@ -69,9 +72,9 @@ func mouse_exited() -> void:
 		if Global.active_hover == self: Global.active_hover = null
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_purchase") and Global.active_hover == self and Global.score >= cost and memory_name != "placeholder":
+	if event.is_action_pressed("ui_purchase") and Global.active_hover == self and Global.points >= cost and memory_name != "placeholder":
 		$Purchase.play()
-		Global.score -= cost
+		Global.points -= cost
 		Global.add_memory(memory_name)
 		get_node("../../").delete_memory(index)
 		delete()

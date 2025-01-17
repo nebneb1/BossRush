@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const OFFER_RANGE = [6, 10]
 const SPREAD_DISATANCE = 100.0
 const WAIT = 0.1
@@ -19,16 +18,26 @@ func _ready() -> void:
 	generate_memories()
 
 func generate_memories():
-	offer_num = randi_range(OFFER_RANGE[0], OFFER_RANGE[1])
+	offer_num = Global.run_memories("memory_number", randi_range(OFFER_RANGE[0], OFFER_RANGE[1]))
+	#var potential_offers : Array = []
+	#for offer in Global.avalable_memories:
+		#var add = true
+		#for mem in Global.current_memories:
+			#if offer["name"] == mem["name"]:
+				#add = false
+		#
+		#if add:
+			#potential_offers.append(offer)
+	var exclude : Array = []
 	for i in range(offer_num):
 		var rarity = Global.random_weighted(weights)[0]
-		var memory = Global.random_memory(rarity)
-		var price = Global.random_price(rarity)
+		var memory = Global.random_memory(rarity, exclude)
+		var price = Global.run_memories("memory_price", Global.random_price(rarity))
+		exclude.append(memory["name"])
 		offers.append([memory, price])
 		
 
 func show_memories():
-			
 	if offers.size() != 0:
 		for i in range(offers.size()):
 			if player_in_radius:
@@ -42,6 +51,7 @@ func show_memories():
 				inst.icon = offer_memory["icon"]
 				inst.cost = offer_price
 				inst.index = i
+				inst.consts = offer_memory["constants"]
 				inst.target_pos = -Vector2.RIGHT.rotated((PI / (offer_num - 1)) * i) * SPREAD_DISATANCE
 				
 				$Offers.add_child(inst)

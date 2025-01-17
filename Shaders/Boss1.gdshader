@@ -29,7 +29,7 @@ void fragment() {
 	
 	vec4 pixelColor = texture(TEXTURE, UV);
 	vec4 temp = pixelColor;
-	if(pixelColor == goop_mask_color){
+	if(distance(pixelColor, goop_mask_color) < tolerance){
 		pixelColor = goop_background_color;
 	}
 	

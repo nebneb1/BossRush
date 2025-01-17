@@ -65,6 +65,7 @@ var parry_sucessful = true
 # effect vars
 var invenerable_timer = 0.0
 var invenerable = false
+var immunity : int = 0
 
 func _ready() -> void:
 	#Global.add_memory(0)
@@ -141,7 +142,7 @@ func _physics_process(delta: float) -> void:
 		if abs(dir.length()) < DEADZONE: 
 			velocity = velocity.lerp(Vector2.ZERO, delta * DAMP)
 		else:
-			velocity = velocity.lerp(dir * SPEED, delta * ACCEL)
+			velocity = velocity.lerp(dir * SPEED * Global.run_memories("movement_mult", 1.0), delta * ACCEL)
 			dash_direction = dir 
 	else:
 		velocity = dash_direction * SPEED * DASH_SPEED_BONUS
@@ -192,6 +193,8 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("attack_right"): attack_dir = Vector2.RIGHT
 		$Swing.play()
 		$Attack/Sprite2D.show()
+		attack_area.damage = Global.run_memories("base_damage", 1.0) * Global.run_memories("damage_delt_mult", 1.0)
+		attack_area.scale = Vector2.ONE * Global.run_memories("attack_size", 1.0)
 		attack_area.used = false
 		attack_timer = ATTACK_COOLDOWN
 		attack_area.rotation = attack_dir.angle()
@@ -218,14 +221,26 @@ func _on_damage_detector_area_entered(area: Area2D) -> void:
 			Global.combo += Global.run_memories("parry_combo", PARRY_COMBO_BONUS)
 	
 	elif area.is_in_group("damage") and not invenerable:
-		damage(Global.run_memories("damage", area.damage))
+		damage(area.damage)
 
 func damage(ammount : int):
 	invenerable_timer = damaged_invenerability_time
 	invenerable = true
-	$Damage.play("damage")
-	$DamageSound.play()
-	health -= ammount
+	if immunity <= 0:
+		$Damage.play("damage")
+		$DamageSound.play()
+		Global.health -= Global.run_memories("incoming_damage", ammount)
+		if Global.health <= 0.001:
+			if Global.has_memory("Sensitivity") and Global.get_memory("Sensitivity")["persistant"][0]:
+				Global.get_memory("Sensitivity")["persistant"][0] = false
+				Global.health = Global.max_health * Global.get_memory("Sensitivity")["constants"]["percent"]/100.0
+			else:
+				death()
+	else:
+		immunity -= 1
+
+func death():
+	queue_free()
 
 
 func _on_fall_animation_finished(anim_name: StringName) -> void:
