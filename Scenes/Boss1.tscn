@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cq4if74e4o0"]
+[gd_scene load_steps=82 format=3 uid="uid://cq4if74e4o0"]
 
 [ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_yju3l"]
 [ext_resource type="Shader" path="res://Shaders/Boss1.gdshader" id="2_0bq6s"]
@@ -11,25 +11,42 @@
 [ext_resource type="Texture2D" uid="uid://b4n3cal6jmn3" path="res://Art/Sprites/Sparkles/star5.png" id="15_bctxj"]
 [ext_resource type="Texture2D" uid="uid://oi173y6hdt62" path="res://Art/Sprites/Sparkles/star6.png" id="16_w6qkt"]
 [ext_resource type="Texture2D" uid="uid://bhl8716oiukoc" path="res://Art/Sprites/Sparkles/star7.png" id="17_jrsj6"]
+[ext_resource type="AudioStream" uid="uid://c6eyxdpi1scjq" path="res://Audio/SFX/DREAM-SFX-AcheAmbientMoveAttack.ogg" id="18_t2ilb"]
 [ext_resource type="Texture2D" uid="uid://do5y60amdjumm" path="res://Art/Sprites/Sparkles/star8.png" id="18_y1an2"]
+[ext_resource type="AudioStream" uid="uid://db1ro6vhagweo" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph1.wav" id="19_pbw7w"]
 [ext_resource type="Script" path="res://Scripts/ComplexDamage.gd" id="19_x2sau"]
+[ext_resource type="AudioStream" uid="uid://bvjr47xfjm5hq" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph2.wav" id="20_qs6q5"]
 [ext_resource type="AudioStream" uid="uid://ckf2ik7gr1hwu" path="res://Audio/SFX/DREAM-SFX-AcheDamage1.wav" id="21_afuwo"]
+[ext_resource type="AudioStream" uid="uid://uku16uepk8ao" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph3.wav" id="21_m0x1p"]
 [ext_resource type="Texture2D" uid="uid://y38k5yijdi8y" path="res://Art/BackgroundsOrArenas/Arena-Ache-BossfightBackground.png" id="21_w35q3"]
+[ext_resource type="AudioStream" uid="uid://cs7w1yqjvrmg4" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph4.wav" id="22_gcnwt"]
 [ext_resource type="AudioStream" uid="uid://bu2diklrt4tbh" path="res://Audio/SFX/DREAM-SFX-AcheDamage2.wav" id="22_pq6ln"]
+[ext_resource type="AudioStream" uid="uid://f7fceiccg3y1" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph5.wav" id="23_6x6gr"]
 [ext_resource type="AudioStream" uid="uid://vuoru2on22wi" path="res://Audio/SFX/DREAM-SFX-AcheDamage3.wav" id="23_vyxx6"]
+[ext_resource type="Texture2D" uid="uid://dj0b4dkdmcn0u" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack1-Idle1.png" id="24_pnut3"]
 [ext_resource type="Texture2D" uid="uid://bkovhda2j7flm" path="res://TechAssets/AcheMask.png" id="24_u2ip0"]
+[ext_resource type="Texture2D" uid="uid://bks2e2madpy8f" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack1.png" id="25_23606"]
+[ext_resource type="AudioStream" uid="uid://cx6ld5mhacu0y" path="res://Audio/Music/ACHEINMYBONES.ogg" id="25_ec68g"]
 [ext_resource type="Shader" path="res://Shaders/Smoke3.gdshader" id="25_ykip8"]
 [ext_resource type="Shader" path="res://Shaders/Highlights.gdshader" id="26_itxju"]
+[ext_resource type="Texture2D" uid="uid://c7f2r308o70wu" path="res://Art/Sprites/Bosses/Ache/Effects/Attacks/AcheBossSignal Attack 2.png" id="26_sj8vk"]
 [ext_resource type="Texture2D" uid="uid://wxgbof2rlotx" path="res://Art/BackgroundsOrArenas/Sprite-0004.png" id="26_vc71y"]
 [ext_resource type="Script" path="res://Scripts/InfAnimation.gd" id="27_ep13s"]
+[ext_resource type="Texture2D" uid="uid://me7uy4lb6ggx" path="res://Art/Sprites/Bosses/Ache/Effects/Attacks/AcheBossSignal Attack 3.png" id="27_ryrjw"]
 [ext_resource type="Shader" path="res://Shaders/smoke2.gdshader" id="28_7n71j"]
+[ext_resource type="PackedScene" uid="uid://cde7ynpjs01h4" path="res://Scenes/Damage.tscn" id="28_onv1l"]
+[ext_resource type="Texture2D" uid="uid://wyt5ndcc1xj6" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack4 (S attack)/Ache boss Sprite-Attack4 (s Attack)35.png" id="28_pp0gs"]
+[ext_resource type="Texture2D" uid="uid://dgbk5klsbnafq" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack4 (S attack)/Ache boss Sprite-Attack4 (s Attack)42.png" id="29_uhdku"]
+[ext_resource type="Texture2D" uid="uid://1fyd10xvhy2p" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack4 (S attack)/Ache boss Sprite-Attack4 (s Attack)43.png" id="30_kl0vy"]
 [ext_resource type="Shader" path="res://Shaders/Screen3.gdshader" id="30_yyqhe"]
+[ext_resource type="Texture2D" uid="uid://cray24ewpciq" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack4 (S attack)/Ache boss Sprite-Attack4 (s Attack)47.png" id="31_ci4cb"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fnuyh"]
+frequency = 0.0096
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7r4r2"]
-width = 960
-height = 540
+width = 1
+height = 2360
 noise = SubResource("FastNoiseLite_fnuyh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4b2m2"]
@@ -41,6 +58,7 @@ shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/progress = 1.0
 shader_parameter/width = 0.00263
 shader_parameter/ymult = 2.108
+shader_parameter/distort_intencity = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_7r4r2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ki03y"]
@@ -66,6 +84,92 @@ _data = {
 "attack1": SubResource("Animation_4dur3")
 }
 
+[sub_resource type="Animation" id="Animation_a6g8g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D2:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2:material:shader_parameter/distort_intencity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b05sf"]
+resource_name = "hit"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D2:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.37),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2:material:shader_parameter/distort_intencity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.07, 0.08, 0.09, 0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.3, 0.33, 0.36, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -60.17, -34.465, -60.17, 0.0, -60.17, -34.465, -60.17, 0.0, -60.17, -34.465, -60.17, 0.0, -60.17, -34.465, -60.17, 0.0, -60.17, -34.465, -60.17, 0.0, -60.17, -34.465, -60.17, 0.0, -60.17, -34.465, -60.17, -34.465, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.09, 0.15, 0.21, 0.27, 0.32, 0.38),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0.94902, 0, 1), Color(0.0156863, 1, 0, 1), Color(0, 1, 0.984314, 1), Color(0, 0.101961, 1, 1), Color(1, 0, 0.898039, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vf5ys"]
+_data = {
+"RESET": SubResource("Animation_a6g8g"),
+"hit": SubResource("Animation_b05sf")
+}
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0heof"]
 streams_count = 3
 stream_0/stream = ExtResource("21_afuwo")
@@ -74,6 +178,211 @@ stream_1/stream = ExtResource("22_pq6ln")
 stream_1/weight = 1.0
 stream_2/stream = ExtResource("23_vyxx6")
 stream_2/weight = 1.0
+
+[sub_resource type="Animation" id="Animation_q8gqt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_vf3yc"]
+resource_name = "woosh"
+length = 3.84
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 3.8),
+"transitions": PackedFloat32Array(0.241484, 2.54912, 1),
+"update": 0,
+"values": [-80.0, 0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xf5nf"]
+_data = {
+"RESET": SubResource("Animation_q8gqt"),
+"woosh": SubResource("Animation_vf3yc")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pje0g"]
+random_pitch = 1.2
+streams_count = 5
+stream_0/stream = ExtResource("19_pbw7w")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("20_qs6q5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("21_m0x1p")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("22_gcnwt")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("23_6x6gr")
+stream_4/weight = 1.0
+
+[sub_resource type="Animation" id="Animation_q1s1p"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning/Idle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.364706), Color(1, 0, 0, 0), Color(1, 0, 0, 0.372549), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5yra3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning/Surround:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Warning/Idle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Warning/SweepL:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Warning/SweepR:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Warning/Womp:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ates"]
+resource_name = "Surround"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning/Surround:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.364706), Color(1, 0, 0, 0), Color(1, 0, 0, 0.396078), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o37dj"]
+resource_name = "SweepL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning/SweepL:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oyw3l"]
+resource_name = "SweepR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning/SweepR:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cay36"]
+resource_name = "Womp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning/Womp:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.32549), Color(1, 0, 0, 0), Color(1, 0, 0, 0.32549), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nl3mo"]
+_data = {
+"Idle": SubResource("Animation_q1s1p"),
+"RESET": SubResource("Animation_5yra3"),
+"Surround": SubResource("Animation_1ates"),
+"SweepL": SubResource("Animation_o37dj"),
+"SweepR": SubResource("Animation_oyw3l"),
+"Womp": SubResource("Animation_cay36")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbpai"]
+size = Vector2(325, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo5i3"]
+size = Vector2(302, 375)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a484h"]
 shader = ExtResource("26_itxju")
@@ -192,10 +501,8 @@ show_behind_parent = true
 z_index = 3
 material = SubResource("ShaderMaterial_4b2m2")
 sprite_frames = ExtResource("4_mr0xi")
-animation = &"SurroundBack"
+animation = &"Womp"
 autoplay = "Idle"
-frame = 44
-frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ache/Sprite"]
 clip_children = 2
@@ -278,6 +585,12 @@ libraries = {
 "": SubResource("AnimationLibrary_s5abx")
 }
 
+[node name="Hit" type="AnimationPlayer" parent="Ache/Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_vf5ys")
+}
+speed_scale = 1.774
+
 [node name="Damage" type="Area2D" parent="Ache" node_paths=PackedStringArray("collision_sprite") groups=["damage"]]
 script = ExtResource("19_x2sau")
 collision_sprite = NodePath("../Sprite/AnimatedSprite2D")
@@ -291,6 +604,91 @@ max_polyphony = 10
 bus = &"SFXDream"
 
 [node name="Projectiles" type="Node2D" parent="Ache"]
+
+[node name="Move" type="AudioStreamPlayer" parent="Ache"]
+stream = ExtResource("18_t2ilb")
+volume_db = -80.0
+autoplay = true
+bus = &"SFXDream"
+
+[node name="woosh" type="AnimationPlayer" parent="Ache"]
+libraries = {
+"": SubResource("AnimationLibrary_xf5nf")
+}
+
+[node name="Tele" type="AudioStreamPlayer" parent="Ache"]
+stream = SubResource("AudioStreamRandomizer_pje0g")
+bus = &"SFXDream"
+
+[node name="Warning" type="AnimationPlayer" parent="Ache"]
+libraries = {
+"": SubResource("AnimationLibrary_nl3mo")
+}
+
+[node name="Surround" type="Node2D" parent="Ache/Warning"]
+modulate = Color(1, 0, 0, 0)
+
+[node name="AcheBossSprite-attack1-idle1" type="Sprite2D" parent="Ache/Warning/Surround"]
+position = Vector2(320, 180)
+texture = ExtResource("24_pnut3")
+
+[node name="Idle" type="Node2D" parent="Ache/Warning"]
+modulate = Color(1, 0, 0, 0)
+
+[node name="AcheBossSprite-attack1-idle1" type="Sprite2D" parent="Ache/Warning/Idle"]
+position = Vector2(320, 180)
+texture = ExtResource("25_23606")
+
+[node name="SweepL" type="Node2D" parent="Ache/Warning"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="AcheBossSprite-attack1-idle1" type="Sprite2D" parent="Ache/Warning/SweepL"]
+position = Vector2(320, 180)
+texture = ExtResource("26_sj8vk")
+
+[node name="SweepR" type="Node2D" parent="Ache/Warning"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="AcheBossSprite-attack1-idle1" type="Sprite2D" parent="Ache/Warning/SweepR"]
+position = Vector2(320, 180)
+texture = ExtResource("27_ryrjw")
+
+[node name="Womp" type="Node2D" parent="Ache/Warning"]
+modulate = Color(1, 0, 0, 0)
+
+[node name="AcheBossSprite-attack1-idle1" type="Sprite2D" parent="Ache/Warning/Womp"]
+position = Vector2(320, 180)
+texture = ExtResource("28_pp0gs")
+
+[node name="AcheBossSprite-attack1-idle2" type="Sprite2D" parent="Ache/Warning/Womp"]
+position = Vector2(320, 180)
+texture = ExtResource("29_uhdku")
+
+[node name="AcheBossSprite-attack1-idle3" type="Sprite2D" parent="Ache/Warning/Womp"]
+position = Vector2(320, 180)
+texture = ExtResource("30_kl0vy")
+
+[node name="AcheBossSprite-attack1-idle4" type="Sprite2D" parent="Ache/Warning/Womp"]
+position = Vector2(320, 180)
+texture = ExtResource("31_ci4cb")
+
+[node name="DamageAreas" type="Node2D" parent="Ache"]
+
+[node name="SweepL" parent="Ache/DamageAreas" instance=ExtResource("28_onv1l")]
+visible = false
+used = true
+
+[node name="CollisionShape2D" parent="Ache/DamageAreas/SweepL" index="0"]
+position = Vector2(-152.5, 8.5)
+shape = SubResource("RectangleShape2D_bbpai")
+
+[node name="SweepR" parent="Ache/DamageAreas" instance=ExtResource("28_onv1l")]
+visible = false
+used = true
+
+[node name="CollisionShape2D" parent="Ache/DamageAreas/SweepR" index="0"]
+position = Vector2(171, 8.5)
+shape = SubResource("RectangleShape2D_wo5i3")
 
 [node name="Arena" type="Node2D" parent="."]
 
@@ -402,6 +800,15 @@ polygon = PackedVector2Array(80, 318, 252, 319, 252, 337, 299, 337, 299, 369, 37
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n70f2")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_ec68g")
+volume_db = -4.464
+autoplay = true
+bus = &"Music"
+
 [connection signal="state_change" from="Ache" to="Ache" method="_on_state_change"]
 [connection signal="animation_finished" from="Ache/Sprite/AnimatedSprite2D2" to="Ache" method="_on_animation_finished"]
 [connection signal="area_entered" from="Ache/Damage" to="Ache" method="_on_damage_area_entered"]
+
+[editable path="Ache/DamageAreas/SweepL"]
+[editable path="Ache/DamageAreas/SweepR"]

@@ -3,6 +3,7 @@ extends Area2D
 @export var damage : int = 1
 @export var collision_sprite : Node2D
 @export_range(2, 50) var epsilon : int
+var used = false
 
 func _ready() -> void:
 	update_collisions()

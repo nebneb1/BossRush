@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsq041foefouq"]
+[gd_scene load_steps=13 format=3 uid="uid://dsq041foefouq"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_db6i5"]
 [ext_resource type="Shader" path="res://Shaders/Boss1.gdshader" id="1_gfhux"]
 [ext_resource type="Texture2D" uid="uid://caese3m7fcuu8" path="res://TechAssets/boss1proj/proj1.png" id="2_ad6qp"]
 [ext_resource type="Texture2D" uid="uid://cnlaoh5p4t1br" path="res://TechAssets/boss1proj/proj2.png" id="3_6fspx"]
+[ext_resource type="Texture2D" uid="uid://chn8olges1fdp" path="res://Art/Sprites/Bosses/Ache/Effects/Attacks/AcheBullet.png" id="3_wq36g"]
 [ext_resource type="Texture2D" uid="uid://biq2jh4sdpujl" path="res://TechAssets/boss1proj/proj3.png" id="4_gxqsd"]
 [ext_resource type="Texture2D" uid="uid://ldyg7ky3bpy" path="res://TechAssets/boss1proj/proj4.png" id="5_81gfk"]
 [ext_resource type="Texture2D" uid="uid://bhl8716oiukoc" path="res://Art/Sprites/Sparkles/star7.png" id="6_cigbb"]
@@ -18,9 +19,18 @@ shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/progress = 1.0
 shader_parameter/width = 0.098
 shader_parameter/ymult = 0.928
+shader_parameter/distort_intencity = null
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kobr7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wq36g")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ad6qp")
@@ -52,8 +62,7 @@ material = SubResource("ShaderMaterial_p45v1")
 sprite_frames = SubResource("SpriteFrames_kobr7")
 animation = &"anim"
 autoplay = "anim"
-frame = 1
-frame_progress = 0.756533
+frame_progress = 0.68125
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 clip_children = 2
@@ -62,8 +71,7 @@ material = SubResource("ShaderMaterial_p45v1")
 sprite_frames = SubResource("SpriteFrames_kobr7")
 animation = &"anim"
 autoplay = "anim"
-frame = 1
-frame_progress = 0.756533
+frame_progress = 0.20602
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D2"]
 position = Vector2(-5, 0)

@@ -604,7 +604,7 @@ position = Vector2(0, 15)
 rotation = 1.5708
 shape = ExtResource("2_yjmjc")
 
-[node name="DamageDetector" type="Area2D" parent="."]
+[node name="DamageDetector" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageDetector"]
 position = Vector2(0, 15)

@@ -5,12 +5,7 @@ var health = 1.0
 var boss_name = "ache"
 
 func _ready() -> void:
-	Global.run_memories("boss_spawn")
-	Global.max_combo = Global.run_memories("base_max_combo", Global.BASE_MAX_COMBO)
-	Global.combo = Global.run_memories("start_combo", 1.0)
-	Global.boss = self
-	Global.run_memories("fight_start")
-	call_deferred("set_health")
+	pass
 
 func set_health():
 	health = Global.run_memories("boss_health", Global.BOSS_HEALTH[boss_name])
@@ -24,6 +19,7 @@ func damage(ammount):
 	health -= ammount
 	Global.points_gained += ammount * Global.combo
 	$DamageSound.play()
+	$Sprite/Hit.play("hit", 1.75)
 	if health <= 0:
 		Global.run_memories("fight_end")
 		Global.points += Global.run_memories("points_gained_end", Global.points_gained)

@@ -9,6 +9,7 @@ uniform float progress: hint_range(0.0, 1.0);
 uniform sampler2D noise;
 uniform float width = 0.00263;
 uniform float ymult = 2.108;
+uniform float distort_intencity;
 
 bool is_goop(vec4 color){
 	return distance(color.rgb, goop_mask_color.rgb) < tolerance;
@@ -28,14 +29,19 @@ void fragment() {
 	vec4 outline = mix(outline_y, outline_x, outline_x);
 	vec4 outline_color_layer = mix(COLOR, outline, progress * (1.0 - COLOR.a));
 	
-	vec4 pixelColor = texture(TEXTURE, UV);
+	
+	vec2 uv = UV;
+	uv.x += (texture(noise, uv).r * 2.0 - 1.0)/500.0 * distort_intencity;
+	
+	vec4 pixelColor = texture(TEXTURE, uv);
 	vec4 temp = pixelColor;
 	if(distance(pixelColor, goop_mask_color) < tolerance){
 		pixelColor = goop_background_color;
 	}
 	
 	
-	COLOR = pixelColor + outline_color_layer - temp;
+	pixelColor = pixelColor + outline_color_layer - temp + (vec4(1.0) -  texture(TEXTURE, uv) * texture(TEXTURE, UV)) * distort_intencity;
+	COLOR = pixelColor;
 	
 	
 	

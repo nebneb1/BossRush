@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cde7ynpjs01h4"]
+
+[ext_resource type="Script" path="res://Scripts/SimpleDamage.gd" id="1_yep66"]
+
+[node name="Area2D" type="Area2D" groups=["damage", "parry"]]
+script = ExtResource("1_yep66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

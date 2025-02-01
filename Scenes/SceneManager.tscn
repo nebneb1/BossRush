@@ -1,13 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://dl58232fo47a2"]
+[gd_scene load_steps=25 format=3 uid="uid://dl58232fo47a2"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_nfft5"]
 [ext_resource type="Shader" path="res://Shaders/smoke2.gdshader" id="3_sglvw"]
 [ext_resource type="PackedScene" uid="uid://bagt08ca3cu7q" path="res://Scenes/ShopScene.tscn" id="3_tcb5t"]
-[ext_resource type="Shader" path="res://Scenes/Wacky.gdshader" id="5_0qmxk"]
+[ext_resource type="Shader" path="res://Shaders/Wacky.gdshader" id="5_0qmxk"]
 [ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="5_5begj"]
 [ext_resource type="Shader" path="res://Shaders/Screen3.gdshader" id="5_8ps1f"]
 [ext_resource type="Shader" path="res://Shaders/SSSpin.gdshader" id="6_3b6iy"]
 [ext_resource type="Shader" path="res://Shaders/Distort.gdshader" id="6_a2i54"]
+[ext_resource type="Shader" uid="uid://doprcxcqnxu3y" path="res://Shaders/SSBrightnessContrast.tres" id="9_dja5m"]
+[ext_resource type="Shader" path="res://Shaders/comb1.gdshader" id="9_k4skq"]
 
 [sub_resource type="GDScript" id="GDScript_p6iji"]
 script/source = "extends SubViewport
@@ -21,12 +23,6 @@ shader = ExtResource("3_sglvw")
 shader_parameter/transparent = false
 shader_parameter/transparent_thresh = null
 shader_parameter/add_color = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_744yx"]
-shader = ExtResource("5_0qmxk")
-shader_parameter/intensity = 0.191
-shader_parameter/edge_width = 0.622
-shader_parameter/noise_ammount = 0.35
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cmbpe"]
 noise_type = 2
@@ -80,14 +76,33 @@ shader_parameter/direction = 1.0
 shader_parameter/tiling = Vector2(1, 1)
 shader_parameter/color_tint = Vector4(-1.4, -0.29, 0.69, 0.28)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mew1t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3win"]
+shader = ExtResource("9_dja5m")
+shader_parameter/brightness = 1.19
+shader_parameter/contrast = 3.23
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78v1r"]
+shader = ExtResource("9_k4skq")
+shader_parameter/brightness = 1.52
+shader_parameter/contrast = 3.27
+shader_parameter/intensity = 0.071
+shader_parameter/edge_width = 0.82
+shader_parameter/noise_ammount = 0.29
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_744yx"]
+shader = ExtResource("5_0qmxk")
+shader_parameter/intensity = 0.253
+shader_parameter/edge_width = 0.613
+shader_parameter/noise_ammount = 0.76
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bx1k"]
 shader = ExtResource("6_a2i54")
 shader_parameter/center = Vector2(0.535, 0.47)
-shader_parameter/strength = 1.595
-shader_parameter/falloff = 1.0
-shader_parameter/direction = 1.0
+shader_parameter/strength = 8.325
+shader_parameter/falloff = 10.0
+shader_parameter/direction = 0.536
 shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/color_tint = Vector4(-0.875, -2.22, 1.565, 0.215)
+shader_parameter/color_tint = Vector4(0.49, 0.7, 1.165, 0.715)
 
 [node name="SceneManager" type="Control" node_paths=PackedStringArray("viewport")]
 layout_mode = 3
@@ -141,28 +156,6 @@ mouse_filter = 2
 texture_filter = 1
 texture_repeat = 3
 material = SubResource("ShaderMaterial_2patt")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="wacky" type="Control" parent="ScreenspaceEffects"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/wacky"]
-texture_filter = 1
-texture_repeat = 3
-material = SubResource("ShaderMaterial_744yx")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,7 +282,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="drift2" type="Control" parent="ScreenspaceEffects"]
+[node name="b+c" type="Control" parent="ScreenspaceEffects"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -299,10 +292,75 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/drift2"]
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/b+c"]
 texture_filter = 1
 texture_repeat = 3
-material = SubResource("ShaderMaterial_mew1t")
+material = SubResource("ShaderMaterial_b3win")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="comb" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/comb"]
+material = SubResource("ShaderMaterial_78v1r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="wacky" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="wacky"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_744yx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="drift2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="drift2"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_8bx1k")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -331,3 +389,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

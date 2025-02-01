@@ -213,6 +213,11 @@ func _on_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_damage_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("damage") and not area.used:
+		area_damage(area)
+
+func area_damage(area : Area2D):
+	print("owie")
 	if area.is_in_group("parry") and parry_active:
 		parry_sucessful = true
 		if dashing or dash_cooldown_timer >= 0.001:

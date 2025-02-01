@@ -12,7 +12,15 @@ func _ready() -> void:
 	fake_trans_to_scene(Callable(self, "empty_method"), "fade_from_black", 3.0)
 	Global.main = self
 
-	
+func screenspace_hide_all():
+	for child in $ScreenspaceEffects.get_children():
+		child.hide()
+
+func screenspace_enable(id : String):
+	for child in $ScreenspaceEffects.get_children():
+		child.hide()
+
+
 func empty_method():
 	pass
 

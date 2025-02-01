@@ -1,5 +1,6 @@
-[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://bguc06w1wf2pr"]
+[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://bguc06w1wf2pr"]
 
+[ext_resource type="AudioEffectSpectrumAnalyzer" uid="uid://b4d711grsqie2" path="res://Tres/spec.tres" id="1_2d6lo"]
 [ext_resource type="AudioEffectReverb" uid="uid://mg7u1t3njl5i" path="res://Tres/ReverbSFX.tres" id="1_t8w4i"]
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_3xe63"]
@@ -46,7 +47,7 @@ surround = 0.26
 resource_name = "Reverb"
 
 [resource]
-bus/0/volume_db = 0.0694828
+bus/0/volume_db = -0.130497
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_3xe63")
 bus/0/effect/0/enabled = false
 bus/1/name = &"Music"
@@ -55,6 +56,8 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
+bus/1/effect/0/effect = ExtResource("1_2d6lo")
+bus/1/effect/0/enabled = true
 bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false

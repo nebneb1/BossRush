@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhq5x1a4mduqf"]
+
+[ext_resource type="Script" path="res://Scripts/ProjectileFollow.gd" id="1_b4a07"]
+[ext_resource type="Texture2D" uid="uid://chn8olges1fdp" path="res://Art/Sprites/Bosses/Ache/Effects/Attacks/AcheBullet.png" id="3_us2b6"]
+[ext_resource type="Script" path="res://Scripts/SimpleDamage.gd" id="9_ett3k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v37wd"]
+radius = 7.0
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(-1, 1)
+script = ExtResource("1_b4a07")
+
+[node name="Area2D" type="Area2D" parent="." groups=["damage", "parry"]]
+script = ExtResource("9_ett3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_v37wd")
+
+[node name="AcheBullet" type="Sprite2D" parent="."]
+texture = ExtResource("3_us2b6")
