@@ -1,0 +1,920 @@
+[gd_scene load_steps=48 format=3 uid="uid://7grieokjqfjd"]
+
+[ext_resource type="Shader" path="res://Shaders/Boss1_text.gdshader" id="1_07yma"]
+[ext_resource type="Script" path="res://Scripts/death.gd" id="1_r4m5a"]
+[ext_resource type="FontFile" uid="uid://c2uo4xv5s585d" path="res://Fonts/GrapeSoda.ttf" id="2_ypt3r"]
+[ext_resource type="Material" uid="uid://n7x8pjdn2vn" path="res://Tres/SmokeParticleSystem.tres" id="3_7x7dn"]
+[ext_resource type="Texture2D" uid="uid://bbqktf3j7bibp" path="res://TechAssets/smoke.png" id="4_xv07r"]
+[ext_resource type="Shader" path="res://Shaders/smoke.gdshader" id="6_v3qcm"]
+[ext_resource type="Shader" path="res://Shaders/smoke2.gdshader" id="6_yka7i"]
+[ext_resource type="AudioStream" uid="uid://b3dvjtbunklvd" path="res://Audio/Music/bleedink.ogg" id="7_xcoqm"]
+[ext_resource type="Shader" path="res://Shaders/SSSpin.gdshader" id="9_4rwch"]
+[ext_resource type="Shader" path="res://Shaders/Distort.gdshader" id="12_n5eu4"]
+[ext_resource type="Shader" uid="uid://doprcxcqnxu3y" path="res://Shaders/SSBrightnessContrast.tres" id="13_nmqh4"]
+[ext_resource type="Shader" path="res://Shaders/comb2.gdshader" id="14_o1bvs"]
+[ext_resource type="Shader" path="res://Shaders/Wacky.gdshader" id="15_pekn0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6ls6"]
+shader = ExtResource("1_07yma")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = null
+shader_parameter/outline_color = Color(0.705882, 0.419608, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 0.86
+shader_parameter/distort_intencity = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vywtg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0kkxs"]
+noise = SubResource("FastNoiseLite_vywtg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0n4v"]
+shader = ExtResource("1_07yma")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = null
+shader_parameter/outline_color = Color(1, 0, 0.568627, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 0.86
+shader_parameter/distort_intencity = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_0kkxs")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mnhsb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_otr58"]
+noise = SubResource("FastNoiseLite_mnhsb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fndvm"]
+shader = ExtResource("1_07yma")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = null
+shader_parameter/outline_color = Color(0.529412, 0.717647, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 0.86
+shader_parameter/distort_intencity = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_otr58")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mesuy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_upcxt"]
+noise = SubResource("FastNoiseLite_mesuy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbrvf"]
+shader = ExtResource("1_07yma")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = null
+shader_parameter/outline_color = Color(0.188235, 0.105882, 0.25098, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 0.86
+shader_parameter/distort_intencity = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_upcxt")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mi7oh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1l6a6"]
+noise = SubResource("FastNoiseLite_mi7oh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yarmn"]
+shader = ExtResource("1_07yma")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = null
+shader_parameter/outline_color = Color(1, 0, 0.403922, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 0.86
+shader_parameter/distort_intencity = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_1l6a6")
+
+[sub_resource type="Animation" id="Animation_yrudc"]
+resource_name = "fade_in"
+length = 432.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewportContainer/Main/Smoke/GPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewportContainer/Main/SubViewportContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 9.9, 62.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 1, 0), Color(1, 1, 1, 1), Color(0, 0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(70, 84.9, 101, 113, 124, 137.5, 146, 153.9, 316, 325.1, 335.5, 340, 342.1, 344.1, 347.6, 358.7, 367, 387.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["[tornado radius=0.5][color=light_blue]My skin blends in with the ink now​​​​​​​​​​​​​​​
+The difference is so tame​​​​​​​​​
+The shadows meld in the wind​​​​​​​​​​​​
+A shallow gradient,​​​​​
+all the same
+", "[tornado radius=0.5][color=light_blue]No,​​​
+My skin doesn't blend, it *bleeds*​​​
+It bleeds sweet blood from better times.​​​​​
+It drowns me till the cold sees​​
+an endless ocean of sour citrus time. ", "[tornado radius=0.5][color=light_blue]The blood pools, And makes anew​​​​
+What energy couldn't find​​​​​​
+The time has come, now is forever​​​​​​
+We needn't pass the bus stop this time", "[tornado radius=0.5][color=light_blue]This is where we get off,​​​​​
+This is our stop,​​​​​
+Theres no use in waiting in line.​​​​
+Our time has come,​​
+Now​​​ is forever", "[tornado radius=0.5][color=light_blue]This is the shadow behind you,​​​​
+You cant see it because it isn't there.​​​​
+Its you, but nothing​​​
+It takes your form of suffering​​
+Maybe this time, ​​
+It's a little too much to bear.", "[tornado radius=0.5][color=light_blue]You're no longer there​​​​
+Why would you even care?​​​​
+Who's left to say its selfish if you cant hear", "[tornado radius=0.5][color=light_blue]The noise is,​​ as it was, forever​​​​
+and forever,​ as it is,​ deafening", "[tornado radius=0.5][color=light_blue]I see the shadows forming behing me​​​​
+In nests, they form a hive​​​​
+In faded corners everlasting​​​​
+with lost faces full of pride.", "[tornado radius=0.5][color=light_blue]To think life a person,​​​​
+a person with vitriol and hate​​​​
+for anything good, it decays;​​​​
+it's all lain to waste.", "[tornado radius=0.5][color=light_blue]Try to fight it,​​​​​​
+It plays the petulant child.​​​​​
+Always stubborn,​
+Never cared for,​​
+Its mind unreconciled.", "[tornado radius=0.5][color=light_blue]So when You cant think,​​ and cant reason,​​​​
+you are on steady level with life.", "[tornado radius=0.5][color=light_blue]So it isn't treason.", "[tornado radius=0.5][color=light_blue]This is your reason.
+", "[tornado radius=0.5][color=light_blue]This is​​​​ what you believe in.
+", "[tornado radius=0.5][color=light_blue]I don't really know where I am,​​​
+I am here after all.​​​​
+I don't really see anything in front of me,​​​
+It isn't really there​​ after all.
+", "[tornado radius=0.5][color=light_blue]It's by the wayside​​ where thoughts hide,​​​​
+where the subconscious forms anew.​​​​​​
+where writing unfolds,​​​
+Patterns arose,", "[tornado radius=0.5][color=light_blue]From soft, crimson hues.", "[tornado radius=0.5][color=light_blue][center]From soft, crimson hues."]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(69.9, 82.4, 84.9, 85, 85.5, 100, 100.8, 100.9, 101, 112, 112.8, 112.9, 113, 122, 123.4, 123.9, 124, 135.3, 136.7, 137.4, 137.5, 144.1, 145.5, 145.9, 146, 152, 153.4, 153.8, 153.9, 164, 188.8, 315.9, 316, 324, 324.8, 325, 325.1, 333.5, 335.1, 335.4, 335.5, 339, 339.8, 339.9, 340, 341.5, 341.9, 342, 342.1, 343.5, 343.9, 344, 344.1, 346.5, 347.4, 347.5, 347.6, 358, 358.9, 359, 359.1, 366.5, 366.8, 366.9, 367, 368.5, 386.7, 387.3, 387.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ViewportContainer/Main/Lyrics:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(82.4, 84.9, 85, 85.1, 100, 100.8, 100.9, 101, 112, 112.8, 112.9, 113, 122, 123.4, 123.9, 124, 135.3, 136.7, 137.4, 137.5, 144.1, 145.5, 145.9, 146, 152, 153.4, 153.8, 153.9, 164, 188.8, 315.9, 316, 324, 324.8, 325, 325.1, 333.5, 335.1, 335.4, 335.5, 339, 339.8, 339.9, 340, 341.5, 341.9, 342, 342.1, 343.5, 343.9, 344, 344.1, 346.5, 347.4, 347.5, 347.6, 358, 358.9, 359, 359.1, 366.5, 366.8, 366.9, 367, 368.5, 386.7, 387.3, 389.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D5:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(387.4, 409),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jlb2r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewportContainer/Main/Smoke/GPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewportContainer/Main/SubViewportContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[tornado radius=0.5][color=light_blue][center]No,​​​
+My skin doesn't blend, it *bleeds*
+It bleeds sweet blood from better times.
+It drowns me till the cold sees
+an endless ocean of sour citrus time."]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ViewportContainer/Main/Lyrics:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnwes"]
+_data = {
+"RESET": SubResource("Animation_jlb2r"),
+"fade_in": SubResource("Animation_yrudc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4kfi"]
+
+[sub_resource type="GDScript" id="GDScript_p6ktw"]
+script/source = "extends GPUParticles2D
+
+var TIME = 0.0
+const SCALE = Vector2(200.0, 100.0)
+func _process(delta: float) -> void:
+	TIME += delta
+	position = Vector2(cos(TIME), sin(TIME*2)) * SCALE + Vector2(320, 183)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2a8p"]
+shader = ExtResource("6_v3qcm")
+shader_parameter/colors = PackedColorArray(0.807843, 0, 0.74902, 1, 0.203922, 0, 0.184314, 1, 0.0705882, 0, 0.160784, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j8oc"]
+shader = ExtResource("6_yka7i")
+shader_parameter/transparent = false
+shader_parameter/transparent_thresh = null
+shader_parameter/add_color = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5ljyj"]
+noise_type = 2
+frequency = 0.0014
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h6bpu"]
+width = 1920
+height = 1080
+noise = SubResource("FastNoiseLite_5ljyj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2t4p4"]
+shader = ExtResource("9_4rwch")
+shader_parameter/max_blend = 0.0
+shader_parameter/rotation_offset = 0.0
+shader_parameter/intensity = 0.341
+shader_parameter/invert = false
+shader_parameter/rel_rect_size = Vector2(1920, 1080)
+shader_parameter/safe = 1.15
+shader_parameter/noise = SubResource("NoiseTexture2D_h6bpu")
+
+[sub_resource type="Shader" id="Shader_e2twp"]
+code = "shader_type canvas_item;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 pixelColor = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 original = pixelColor;
+	pixelColor = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + sin(TIME)*pixelColor.b, SCREEN_UV.y + cos(TIME)*pixelColor.r));
+	
+	pixelColor *= 2.0;
+	original *= 2.0;
+	COLOR = (pixelColor * (length(SCREEN_UV - vec2(0.5, 0.5))+2.0) + original * (1.0-length(SCREEN_UV - vec2(0.5, 0.5)))/2.0);
+	COLOR = pixelColor * 2.0 - original;
+	float balance = (sin(TIME*1.1)+1.0)/2.0;
+	balance = balance / 1.5 + 0.25;
+	COLOR = pixelColor * balance + original * (1.0-balance);
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8lt3"]
+shader = SubResource("Shader_e2twp")
+
+[sub_resource type="Shader" id="Shader_lj3w5"]
+code = "shader_type canvas_item;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 pixelColor = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 original = pixelColor;
+	pixelColor = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + sin(TIME)*pixelColor.b * 10.0f, SCREEN_UV.y + cos(sin(TIME))*pixelColor.r));
+	
+	pixelColor *= 2.0;
+	original *= 2.0;
+	COLOR = (pixelColor * (length(SCREEN_UV - vec2(0.5, 0.5))+2.0) + original * (1.0-length(SCREEN_UV - vec2(0.5, 0.5)))/2.0);
+	COLOR = pixelColor * 2.0 - original;
+	//float balance = (sin(TIME*1.1)+1.0)/2.0;
+	//balance = balance / 1.5 + 0.25;
+	//COLOR = pixelColor * balance + original * (1.0-balance);
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsvtd"]
+shader = SubResource("Shader_lj3w5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upmju"]
+shader = ExtResource("12_n5eu4")
+shader_parameter/center = Vector2(0.535, 0.47)
+shader_parameter/strength = 7.549
+shader_parameter/falloff = 1.0
+shader_parameter/direction = 1.0
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/color_tint = Vector4(-0.875, -2.22, 1.565, 0.215)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqhwk"]
+shader = ExtResource("12_n5eu4")
+shader_parameter/center = Vector2(0.535, 0.47)
+shader_parameter/strength = -10.0
+shader_parameter/falloff = 0.1
+shader_parameter/direction = 1.0
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/color_tint = Vector4(1.295, -0.365, 1.535, 0.125)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5gd7"]
+shader = ExtResource("12_n5eu4")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/strength = -0.816
+shader_parameter/falloff = 0.1
+shader_parameter/direction = 1.0
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/color_tint = Vector4(-1.4, -0.29, 0.69, 0.28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_igl4y"]
+shader = ExtResource("13_nmqh4")
+shader_parameter/brightness = 1.19
+shader_parameter/contrast = 3.23
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g43wy"]
+shader = ExtResource("14_o1bvs")
+shader_parameter/brightness = 1.52
+shader_parameter/contrast = 3.27
+shader_parameter/intensity = 0.071
+shader_parameter/edge_width = 0.82
+shader_parameter/noise_ammount = 0.29
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ox4mb"]
+shader = ExtResource("15_pekn0")
+shader_parameter/intensity = 0.253
+shader_parameter/edge_width = 0.613
+shader_parameter/noise_ammount = 0.76
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6ysi"]
+shader = ExtResource("12_n5eu4")
+shader_parameter/center = Vector2(0.535, 0.47)
+shader_parameter/strength = 8.325
+shader_parameter/falloff = 10.0
+shader_parameter/direction = 0.536
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/color_tint = Vector4(0.49, 0.7, 1.165, 0.715)
+
+[node name="Death" type="Node2D"]
+script = ExtResource("1_r4m5a")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="SubViewport" parent="ViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 2
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="ViewportContainer/Main"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="SubViewport" parent="ViewportContainer/Main/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 2
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="ViewportContainer/Main/SubViewportContainer/Main"]
+position = Vector2(32.43, -157.49)
+rotation = 0.0558505
+scale = Vector2(3.04, 3.04)
+
+[node name="Header" type="RichTextLabel" parent="ViewportContainer/Main/SubViewportContainer/Main/Node2D"]
+material = SubResource("ShaderMaterial_o6ls6")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("2_ypt3r")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue][center]it's all too much"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Node2D2" type="Node2D" parent="ViewportContainer/Main/SubViewportContainer/Main"]
+position = Vector2(0, -24.27)
+rotation = -0.0558505
+scale = Vector2(3.04, 3.04)
+
+[node name="DaysSurvived" type="RichTextLabel" parent="ViewportContainer/Main/SubViewportContainer/Main/Node2D2"]
+material = SubResource("ShaderMaterial_u0n4v")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("2_ypt3r")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue][center]days survived: 0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Node2D3" type="Node2D" parent="ViewportContainer/Main/SubViewportContainer/Main"]
+position = Vector2(0, 14.73)
+rotation = 0.0558505
+scale = Vector2(3.04, 3.04)
+
+[node name="Score" type="RichTextLabel" parent="ViewportContainer/Main/SubViewportContainer/Main/Node2D3"]
+material = SubResource("ShaderMaterial_fndvm")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("2_ypt3r")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue][center]score: 0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Node2D4" type="Node2D" parent="ViewportContainer/Main/SubViewportContainer/Main"]
+position = Vector2(-25.99, 110.86)
+rotation = -0.0558505
+scale = Vector2(3.04, 3.04)
+
+[node name="Restart" type="RichTextLabel" parent="ViewportContainer/Main/SubViewportContainer/Main/Node2D4"]
+material = SubResource("ShaderMaterial_rbrvf")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("2_ypt3r")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue][center]\"ESC\" to restart"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Lyrics" type="SubViewportContainer" parent="ViewportContainer/Main"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="SubViewport" parent="ViewportContainer/Main/Lyrics"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 2
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Node2D2" type="Node2D" parent="ViewportContainer/Main/Lyrics/Main"]
+position = Vector2(43.425, -184.28)
+scale = Vector2(3.04, 3.04)
+
+[node name="PointsText2" type="RichTextLabel" parent="ViewportContainer/Main/Lyrics/Main/Node2D2"]
+material = SubResource("ShaderMaterial_yarmn")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("2_ypt3r")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue][center]No,​​​
+My skin doesn't blend, it *bleeds*
+It bleeds sweet blood from better times.
+It drowns me till the cold sees
+an endless ocean of sour citrus time."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Node2D5" type="Node2D" parent="ViewportContainer/Main/Lyrics/Main"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(22.27, -113.3)
+rotation = 0.0558505
+scale = Vector2(3.04, 3.04)
+
+[node name="Header" type="RichTextLabel" parent="ViewportContainer/Main/Lyrics/Main/Node2D5"]
+material = SubResource("ShaderMaterial_o6ls6")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("2_ypt3r")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue][center]Thanks for playing!
+(true ending)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ViewportContainer/Main"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_qnwes")
+}
+
+[node name="Smoke" type="Node2D" parent="ViewportContainer/Main"]
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="ViewportContainer/Main/Smoke"]
+modulate = Color(1, 1, 1, 0.0784314)
+z_index = -11
+material = SubResource("ShaderMaterial_u4kfi")
+position = Vector2(320, 183)
+emitting = false
+amount = 5083
+process_material = ExtResource("3_7x7dn")
+texture = ExtResource("4_xv07r")
+lifetime = 12.46
+collision_base_size = 0.3
+trail_lifetime = 1.96
+script = SubResource("GDScript_p6ktw")
+
+[node name="Node2D" type="Node2D" parent="ViewportContainer/Main/Smoke"]
+z_index = -10
+
+[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Main/Smoke/Node2D"]
+material = SubResource("ShaderMaterial_l2a8p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ViewportContainer/Main"]
+stream = ExtResource("7_xcoqm")
+autoplay = true
+
+[node name="ScreenspaceEffects" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="monochrome" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/monochrome"]
+z_index = 475
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_6j8oc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="spin" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/spin"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_2t4p4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="melted2" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/melted2"]
+z_index = 50
+texture_filter = 1
+material = SubResource("ShaderMaterial_k8lt3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="melted1" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/melted1"]
+visible = false
+z_index = 25
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_qsvtd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="drift" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/drift"]
+visible = false
+z_index = 745
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_upmju")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ScreenspaceEffects/drift"]
+visible = false
+z_index = 746
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_iqhwk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect3" type="ColorRect" parent="ScreenspaceEffects/drift"]
+visible = false
+z_index = 747
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_t5gd7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="b+c" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/b+c"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_igl4y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="comb" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/comb"]
+z_index = 25
+material = SubResource("ShaderMaterial_g43wy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="wacky" type="Control" parent="ScreenspaceEffects"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/wacky"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_ox4mb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="drift2" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/drift2"]
+texture_filter = 1
+texture_repeat = 3
+material = SubResource("ShaderMaterial_j6ysi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2

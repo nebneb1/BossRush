@@ -35,6 +35,7 @@ var current_state : State = State.IDLE
 var previous_state : State = State.IDLE
 var ghost_timer = 0.0
 var left : bool
+@onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 
 func _ready() -> void:
@@ -196,6 +197,8 @@ func surround():
 
 
 func _process(delta: float) -> void:
+	Global.main.screenspace_hide_all()
+	Global.main.screenspace_enable("comb")
 	ghost_timer += delta
 	if ghost_timer >= GHOST_TIME:
 		var inst = ghost_scene.instantiate()
@@ -209,7 +212,9 @@ func _process(delta: float) -> void:
 		State.SURROUND_IDLE:
 			
 			pass
-			
+	
+	if Global.health == 0:
+		audio_stream_player.volume_db = linear_to_db(db_to_linear(audio_stream_player.volume_db) - 0.2 * delta)
 			
 
 

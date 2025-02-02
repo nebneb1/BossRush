@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsq041foefouq"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_db6i5"]
-[ext_resource type="Shader" path="res://Shaders/Boss1.gdshader" id="1_gfhux"]
 [ext_resource type="Texture2D" uid="uid://caese3m7fcuu8" path="res://TechAssets/boss1proj/proj1.png" id="2_ad6qp"]
+[ext_resource type="Shader" path="res://Shaders/Boss1_text.gdshader" id="2_m1u2j"]
 [ext_resource type="Texture2D" uid="uid://cnlaoh5p4t1br" path="res://TechAssets/boss1proj/proj2.png" id="3_6fspx"]
 [ext_resource type="Texture2D" uid="uid://chn8olges1fdp" path="res://Art/Sprites/Bosses/Ache/Effects/Attacks/AcheBullet.png" id="3_wq36g"]
 [ext_resource type="Texture2D" uid="uid://biq2jh4sdpujl" path="res://TechAssets/boss1proj/proj3.png" id="4_gxqsd"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/SimpleDamage.gd" id="7_u2k58"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p45v1"]
-shader = ExtResource("1_gfhux")
+shader = ExtResource("2_m1u2j")
 shader_parameter/goop_mask_color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.5
 shader_parameter/goop_background_color = Color(0, 0, 0, 1)
@@ -62,7 +62,7 @@ material = SubResource("ShaderMaterial_p45v1")
 sprite_frames = SubResource("SpriteFrames_kobr7")
 animation = &"anim"
 autoplay = "anim"
-frame_progress = 0.68125
+frame_progress = 0.529891
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 clip_children = 2
@@ -71,7 +71,7 @@ material = SubResource("ShaderMaterial_p45v1")
 sprite_frames = SubResource("SpriteFrames_kobr7")
 animation = &"anim"
 autoplay = "anim"
-frame_progress = 0.20602
+frame_progress = 0.054661
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D2"]
 position = Vector2(-5, 0)

@@ -7,6 +7,9 @@ var boss_name = "ache"
 func _ready() -> void:
 	pass
 
+func _process(delta: float) -> void:
+	Global.curr_boss_health = health
+	
 func set_health():
 	health = Global.run_memories("boss_health", Global.BOSS_HEALTH[boss_name])
 
@@ -19,7 +22,7 @@ func damage(ammount):
 	health -= ammount
 	Global.points_gained += ammount * Global.combo
 	$DamageSound.play()
-	$Sprite/Hit.play("hit", 1.75)
+	$Sprite/Hit.play("hit")
 	if health <= 0:
 		Global.run_memories("fight_end")
 		Global.points += Global.run_memories("points_gained_end", Global.points_gained)

@@ -4,7 +4,8 @@ extends Control
 
 const SCENES : Dictionary = {
 	"ache": preload("res://Scenes/Boss1.tscn"),
-	"shop": preload("res://Scenes/ShopScene.tscn")
+	"shop": preload("res://Scenes/ShopScene.tscn"),
+	"death": preload("res://Scenes/Death.tscn")
 }
 
 func _ready() -> void:
@@ -18,7 +19,8 @@ func screenspace_hide_all():
 
 func screenspace_enable(id : String):
 	for child in $ScreenspaceEffects.get_children():
-		child.hide()
+		if child.name == id:
+			child.show()
 
 
 func empty_method():
@@ -27,6 +29,10 @@ func empty_method():
 func switch_scene(scene : String):
 	for child in viewport.get_children(): child.queue_free()
 	viewport.add_child(SCENES[scene].instantiate())
+
+func switch_to_death_screen():
+	get_tree().change_scene_to_packed(SCENES["death"])
+
 
 # valid types are: fade_to_black
 func trans_to_scene(scene : String, type : String, time : float):
@@ -48,7 +54,8 @@ func fake_trans_to_scene(after : Callable, type : String, time : float):
 			await tween.finished
 			after.call()
 			var tween2 = create_tween()
-			tween2.tween_property($Transitions/FadeToBlack, "color:a", 0.0, time)
+			if tween2:
+				tween2.tween_property($Transitions/FadeToBlack, "color:a", 0.0, time)
 		
 		"fade_from_black":
 			$Transitions/FadeToBlack.color.a = 1.0

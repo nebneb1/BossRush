@@ -13,6 +13,10 @@ var weights = [["common", 65], ["rare", 25], ["legendary", 10]]
 var player_in_radius = false
 
 func _ready() -> void:
+	Global.main.screenspace_hide_all()
+	Global.main.screenspace_enable("comb")
+	Global.main.screenspace_enable("drift2")
+	Global.combo = 1.0
 	randomize()
 	Global.player.attack_disabled = true
 	generate_memories()

@@ -11,10 +11,12 @@ const BASE_MAX_HEALTH = 100
 var max_health = BASE_MAX_COMBO
 var health = BASE_MAX_HEALTH
 
-
+var curr_boss_health = 0.0
+var curr_boss_max_health = 0.0
 var player : CharacterBody2D
 var boss : Boss
 var main : Control
+var days_survived : int = 0
 
 const SCENE_SEQUENCE = ["ache","shop"]
 var next_scenes = SCENE_SEQUENCE.duplicate()
@@ -513,10 +515,12 @@ var _first_scene = true
 func next_scene():
 	if _first_scene:
 		_first_scene = false
-		main.switch_scene(next_scenes[0])
+		if main:
+			main.switch_scene(next_scenes[0])
 	else:
 		if next_scenes.size() <= 0: next_scenes = SCENE_SEQUENCE.duplicate()
-		main.trans_to_scene(next_scenes[0], "fade_to_black", 3.0)
+		if main:
+			main.trans_to_scene(next_scenes[0], "fade_to_black", 3.0)
 	
 	next_scenes.pop_front()
 

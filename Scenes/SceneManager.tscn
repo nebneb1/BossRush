@@ -1,15 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://dl58232fo47a2"]
+[gd_scene load_steps=24 format=3 uid="uid://dl58232fo47a2"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_nfft5"]
 [ext_resource type="Shader" path="res://Shaders/smoke2.gdshader" id="3_sglvw"]
-[ext_resource type="PackedScene" uid="uid://bagt08ca3cu7q" path="res://Scenes/ShopScene.tscn" id="3_tcb5t"]
+[ext_resource type="Shader" path="res://Shaders/comb2.gdshader" id="4_tlraw"]
 [ext_resource type="Shader" path="res://Shaders/Wacky.gdshader" id="5_0qmxk"]
 [ext_resource type="Shader" path="res://Shaders/Screen.gdshader" id="5_5begj"]
 [ext_resource type="Shader" path="res://Shaders/Screen3.gdshader" id="5_8ps1f"]
 [ext_resource type="Shader" path="res://Shaders/SSSpin.gdshader" id="6_3b6iy"]
 [ext_resource type="Shader" path="res://Shaders/Distort.gdshader" id="6_a2i54"]
 [ext_resource type="Shader" uid="uid://doprcxcqnxu3y" path="res://Shaders/SSBrightnessContrast.tres" id="9_dja5m"]
-[ext_resource type="Shader" path="res://Shaders/comb1.gdshader" id="9_k4skq"]
 
 [sub_resource type="GDScript" id="GDScript_p6iji"]
 script/source = "extends SubViewport
@@ -28,7 +27,7 @@ shader_parameter/add_color = false
 noise_type = 2
 frequency = 0.0014
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h6bpu"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y26ng"]
 width = 1920
 height = 1080
 noise = SubResource("FastNoiseLite_cmbpe")
@@ -41,7 +40,7 @@ shader_parameter/intensity = 0.341
 shader_parameter/invert = false
 shader_parameter/rel_rect_size = Vector2(1920, 1080)
 shader_parameter/safe = 1.15
-shader_parameter/noise = SubResource("NoiseTexture2D_h6bpu")
+shader_parameter/noise = SubResource("NoiseTexture2D_y26ng")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7jsj"]
 shader = ExtResource("5_8ps1f")
@@ -82,7 +81,7 @@ shader_parameter/brightness = 1.19
 shader_parameter/contrast = 3.23
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_78v1r"]
-shader = ExtResource("9_k4skq")
+shader = ExtResource("4_tlraw")
 shader_parameter/brightness = 1.52
 shader_parameter/contrast = 3.27
 shader_parameter/intensity = 0.071
@@ -131,8 +130,6 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 script = SubResource("GDScript_p6iji")
 
-[node name="Node2D" parent="ViewportContainer/Main" instance=ExtResource("3_tcb5t")]
-
 [node name="ScreenspaceEffects" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -143,7 +140,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="monochrome" type="Control" parent="ScreenspaceEffects"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,7 +320,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="wacky" type="Control" parent="."]
+[node name="wacky" type="Control" parent="ScreenspaceEffects"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -334,7 +330,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="wacky"]
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/wacky"]
 texture_filter = 1
 texture_repeat = 3
 material = SubResource("ShaderMaterial_744yx")
@@ -347,7 +343,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="drift2" type="Control" parent="."]
+[node name="drift2" type="Control" parent="ScreenspaceEffects"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -357,7 +353,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="drift2"]
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/drift2"]
 texture_filter = 1
 texture_repeat = 3
 material = SubResource("ShaderMaterial_8bx1k")
@@ -371,7 +367,6 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Transitions" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -389,8 +384,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="UI" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0

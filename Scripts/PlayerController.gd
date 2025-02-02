@@ -186,7 +186,7 @@ func _input(event: InputEvent) -> void:
 		$Sprite/Particles.emitting = true
 		Global.next_scene()
 	
-	if event.is_action_pressed("attack") and attack_timer <= 0 and not attack_disabled and not dashing and not parry_timer > 0:
+	if event.is_action_pressed("attack") and attack_timer <= 0 and not attack_disabled and not parry_timer > 0:
 		if event.is_action_pressed("attack_up"): attack_dir = Vector2.UP
 		elif event.is_action_pressed("attack_down"): attack_dir = Vector2.DOWN
 		elif event.is_action_pressed("attack_left"): attack_dir = Vector2.LEFT
@@ -220,6 +220,7 @@ func area_damage(area : Area2D):
 	print("owie")
 	if area.is_in_group("parry") and parry_active:
 		parry_sucessful = true
+		UI.play_combo_up()
 		if dashing or dash_cooldown_timer >= 0.001:
 			Global.combo += Global.run_memories("parry_combo", DASH_PARRY_COMBO_BONUS)
 		else:
@@ -229,6 +230,7 @@ func area_damage(area : Area2D):
 		damage(area.damage)
 
 func damage(ammount : int):
+	UI.play_health_hit()
 	invenerable_timer = damaged_invenerability_time
 	invenerable = true
 	if immunity <= 0:
@@ -245,6 +247,7 @@ func damage(ammount : int):
 		immunity -= 1
 
 func death():
+	Global.main.fake_trans_to_scene(Global.main.switch_to_death_screen, "fade_to_black", 5.0)
 	queue_free()
 
 
