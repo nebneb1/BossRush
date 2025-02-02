@@ -82,9 +82,9 @@ shader_parameter/contrast = 3.23
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_78v1r"]
 shader = ExtResource("4_tlraw")
-shader_parameter/brightness = 1.52
-shader_parameter/contrast = 3.27
-shader_parameter/intensity = 0.071
+shader_parameter/brightness = 1.42
+shader_parameter/contrast = 2.93
+shader_parameter/intensity = 0.019
 shader_parameter/edge_width = 0.82
 shader_parameter/noise_ammount = 0.29
 

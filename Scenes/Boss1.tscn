@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cq4if74e4o0"]
+[gd_scene load_steps=87 format=3 uid="uid://cq4if74e4o0"]
 
 [ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_yju3l"]
 [ext_resource type="Script" path="res://Scripts/Boss1Ache.gd" id="2_0neo8"]
@@ -42,6 +42,42 @@
 [ext_resource type="Texture2D" uid="uid://cray24ewpciq" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack4 (S attack)/Ache boss Sprite-Attack4 (s Attack)47.png" id="31_ci4cb"]
 [ext_resource type="Texture2D" uid="uid://djl3cmd4wah3n" path="res://Art/BackgroundsOrArenas/Arena-Ache-BossfightArena.png" id="38_v6xi3"]
 [ext_resource type="Script" path="res://Scripts/oggloop.gd" id="41_fko53"]
+
+[sub_resource type="Animation" id="Animation_eeivm"]
+resource_name = "PlayerHit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.698039, 0.698039, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f7n15"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsdo1"]
+_data = {
+"PlayerHit": SubResource("Animation_eeivm"),
+"RESET": SubResource("Animation_f7n15")
+}
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fnuyh"]
 frequency = 0.0096
@@ -391,32 +427,32 @@ shader = ExtResource("26_itxju")
 shader_parameter/brightness_threshold = null
 shader_parameter/noise_affect = null
 
-[sub_resource type="Curve" id="Curve_y26u8"]
+[sub_resource type="Curve" id="Curve_hyna7"]
 _data = [Vector2(0, 0), 0.0, 6.47898, 0, 0, Vector2(0.243446, 0.738794), 42.919, 42.919, 0, 0, Vector2(0.674157, 1), -9.99789, -9.99789, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_kjy75"]
-curve = SubResource("Curve_y26u8")
+[sub_resource type="CurveTexture" id="CurveTexture_pbqc3"]
+curve = SubResource("Curve_hyna7")
 
-[sub_resource type="Curve" id="Curve_hhgop"]
+[sub_resource type="Curve" id="Curve_i6phn"]
 min_value = -200.0
 max_value = 200.0
 _data = [Vector2(0.0149813, 83.4622), 0.0, 0.0, 0, 0, Vector2(0.299625, -53.1685), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_7nwxq"]
-curve = SubResource("Curve_hhgop")
+[sub_resource type="CurveTexture" id="CurveTexture_oxo14"]
+curve = SubResource("Curve_i6phn")
 
-[sub_resource type="Curve" id="Curve_yd3fn"]
+[sub_resource type="Curve" id="Curve_6hr2q"]
 min_value = -200.0
 max_value = 200.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_g6ewm"]
-curve = SubResource("Curve_yd3fn")
+[sub_resource type="CurveTexture" id="CurveTexture_8icvk"]
+curve = SubResource("Curve_6hr2q")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3yr63"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_57nyd"]
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(300, 300, 1)
 emission_shape = 1
@@ -428,12 +464,12 @@ initial_velocity_max = 0.25
 gravity = Vector3(0, 0, 0)
 linear_accel_min = -4.08
 linear_accel_max = 5.44
-linear_accel_curve = SubResource("CurveTexture_7nwxq")
-tangential_accel_curve = SubResource("CurveTexture_g6ewm")
+linear_accel_curve = SubResource("CurveTexture_oxo14")
+tangential_accel_curve = SubResource("CurveTexture_8icvk")
 damping_max = 0.28
 scale_min = 0.1
 scale_max = 0.3
-alpha_curve = SubResource("CurveTexture_kjy75")
+alpha_curve = SubResource("CurveTexture_pbqc3")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 turbulence_enabled = true
@@ -489,6 +525,11 @@ position = Vector2(320, 180)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
+[node name="PlayerHit" type="AnimationPlayer" parent="CanvasModulate"]
+libraries = {
+"": SubResource("AnimationLibrary_tsdo1")
+}
+
 [node name="Ache" type="Node2D" parent="." node_paths=PackedStringArray("sprite", "particle_parent", "projectile_holder")]
 position = Vector2(320, 180)
 script = ExtResource("2_0neo8")
@@ -503,7 +544,7 @@ show_behind_parent = true
 z_index = 3
 material = SubResource("ShaderMaterial_4b2m2")
 sprite_frames = ExtResource("4_mr0xi")
-animation = &"Womp"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ache/Sprite"]
@@ -511,8 +552,8 @@ clip_children = 2
 z_index = 3
 material = SubResource("ShaderMaterial_4b2m2")
 sprite_frames = ExtResource("4_mr0xi")
-animation = &"SurroundBack"
-autoplay = "Surround"
+animation = &"BloopBack"
+autoplay = "Idle"
 
 [node name="Node2D" type="Node2D" parent="Ache/Sprite/AnimatedSprite2D"]
 
@@ -735,10 +776,11 @@ self_modulate = Color(0, 0.972549, 0.992157, 1)
 z_index = -11
 position = Vector2(320, 183)
 amount = 5708
-process_material = SubResource("ParticleProcessMaterial_3yr63")
+process_material = SubResource("ParticleProcessMaterial_57nyd")
 texture = SubResource("CompressedTexture2D_eg412")
 lifetime = 12.46
-preprocess = 5.0
+preprocess = 20.0
+speed_scale = 0.25
 collision_base_size = 0.3
 trail_lifetime = 1.96
 script = ExtResource("27_ep13s")

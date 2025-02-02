@@ -93,6 +93,73 @@ shader_parameter/ymult = 0.86
 shader_parameter/distort_intencity = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_1l6a6")
 
+[sub_resource type="Animation" id="Animation_jlb2r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewportContainer/Main/Smoke/GPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewportContainer/Main/SubViewportContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[tornado radius=0.5][color=light_blue][center]No,​​​
+My skin doesn't blend, it *bleeds*
+It bleeds sweet blood from better times.
+It drowns me till the cold sees
+an endless ocean of sour citrus time."]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ViewportContainer/Main/Lyrics:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_yrudc"]
 resource_name = "fade_in"
 length = 432.0
@@ -211,73 +278,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_jlb2r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ViewportContainer/Main/Smoke/GPUParticles2D2:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ViewportContainer/Main/SubViewportContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:text")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["[tornado radius=0.5][color=light_blue][center]No,​​​
-My skin doesn't blend, it *bleeds*
-It bleeds sweet blood from better times.
-It drowns me till the cold sees
-an endless ocean of sour citrus time."]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ViewportContainer/Main/Lyrics:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D5:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qnwes"]
@@ -455,6 +455,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Main" type="SubViewport" parent="ViewportContainer"]
 transparent_bg = true
@@ -561,7 +562,7 @@ offset_bottom = 92.2569
 theme_override_fonts/normal_font = ExtResource("2_ypt3r")
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "[tornado radius=0.5][color=light_blue][center]\"ESC\" to restart"
+text = "[tornado radius=0.5][color=light_blue][center]Hold \"ESC\" to restart"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -671,6 +672,7 @@ mouse_filter = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ViewportContainer/Main"]
 stream = ExtResource("7_xcoqm")
 autoplay = true
+bus = &"Music"
 
 [node name="ScreenspaceEffects" type="Control" parent="."]
 layout_mode = 3
@@ -682,6 +684,7 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="monochrome" type="Control" parent="ScreenspaceEffects"]
 visible = false

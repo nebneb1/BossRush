@@ -23,6 +23,9 @@ enum State {
 @export_range(2, 20) var epsilon = 5
 @export var projectile_holder : Node2D 
 
+
+@onready var player_hit: AnimationPlayer = $"../CanvasModulate/PlayerHit"
+
 @onready var ghost_scene = preload("res://Scenes/Ghost.tscn")
 @onready var particle_scene = preload("res://Scenes/boss1particles2.tscn")
 @onready var animated_sprites = [$Sprite/AnimatedSprite2D, $Sprite/AnimatedSprite2D2]
@@ -39,6 +42,10 @@ var left : bool
 
 
 func _ready() -> void:
+	$Damage.damage = 1 #int(floor(pow(2, Global.days_survived/5.0)))
+	$DamageAreas/SweepL.damage = 1 #int(floor(pow(2, Global.days_survived/5.0)))
+	$DamageAreas/SweepR.damage = 1 #int(floor(pow(2, Global.days_survived/5.0)))
+	Global.player_hit = player_hit
 	boss_name = "ache"
 	Global.run_memories("boss_spawn")
 	Global.max_combo = Global.run_memories("base_max_combo", Global.BASE_MAX_COMBO)
@@ -48,6 +55,7 @@ func _ready() -> void:
 	set_health()
 	
 	randomize()
+	await get_tree().create_timer(4.0).timeout
 	set_state(State.IDLE)
 	
 
@@ -55,33 +63,37 @@ func spawn_projectile(pos : Vector2, rot : float, speed : float = 150.0, damage 
 	var inst = projectile.instantiate()
 	inst.position = pos
 	inst.rotation = rot
-	inst.damage = damage
+	inst.damage = 1 #damage * int(floor(pow(2, Global.days_survived/5.0)))
+	speed *= pow(1.25, Global.days_survived/5.0)
 	inst.speed = speed
 	projectile_holder.add_child(inst)
 
 func proj_sweep(SOURCE_POS : Array, AMMOUNT : int = 10, ANGLE_SPREAD : float = PI/2.0, PROJ_SPACING : float = 0.01, speed = 150.0):
+	AMMOUNT *= floor(pow(1.25, Global.days_survived/5.0))
 	const STOP_TIME = 0.2
 	
 	for pos in SOURCE_POS:
 		for i in range(AMMOUNT):
-			var prog = (float(i) / float(AMMOUNT))
-			spawn_projectile(pos[0], pos[1] + prog * ANGLE_SPREAD - ANGLE_SPREAD/2.0, speed)
-			await get_tree().create_timer(PROJ_SPACING).timeout
+			if not dead:
+				var prog = (float(i) / float(AMMOUNT))
+				spawn_projectile(pos[0], pos[1] + prog * ANGLE_SPREAD - ANGLE_SPREAD/2.0, speed)
+				await get_tree().create_timer(PROJ_SPACING).timeout
 		
-		await get_tree().create_timer(STOP_TIME).timeout
+		if not dead: await get_tree().create_timer(STOP_TIME).timeout
 
 func proj_grid(SOURCE_POS : Array):
-	const AMMOUNT = 5
+	var AMMOUNT = 5 * pow(1.1, Global.days_survived/5.0)
 	const TIMES = 5
 	const STOP_TIME = 2.0
-	const SPEED = 75.0
+	var SPEED = 75.0
 	const OFFSET = 30
 	for i in range(TIMES):
 		for pos in SOURCE_POS:
 			for j in range(AMMOUNT):
-				spawn_projectile((pos[1]-pos[0])*float(j)/float(AMMOUNT) + pos[0], pos[2], SPEED)
+				if not dead:
+					spawn_projectile((pos[1]-pos[0])*float(j)/float(AMMOUNT) + pos[0], pos[2], SPEED)
 		
-		await get_tree().create_timer(STOP_TIME).timeout
+		if not dead: await get_tree().create_timer(STOP_TIME).timeout
 
 
 func random_val(between : Array):
@@ -92,36 +104,41 @@ func set_state(to : State):
 	current_state = to
 	match current_state:
 		State.IDLE:
-			play_animation("Idle")
-			await get_tree().create_timer(random_val(IDLE_TIME) - 1.0).timeout
-			var attack
-			if previous_state == State.SWEEP:
-				attack = ATTACKS_SWEEP.pick_random()
+			if dead and is_instance_valid(Global.player):
+				Global.player.attack_disabled = true
+				play_animation("Death")
+				
 			else:
-				attack = ATTACKS.pick_random()
-				
-			if attack == State.SWEEP: left = bool(randi_range(0, 1))
-			match attack:
-				State.SURROUND:
-					$Tele.play()
-					$Warning.play("Surround")
-				
-				State.SWEEP:
-					$Tele.play()
-					if left:
-						$Warning.play("SweepL")
-					else:
-						$Warning.play("SweepR")
-				
-				State.WOMP:
-					$Tele.play()
-					$Warning.play("Womp")
-					play_animation("Womp")
-				
+				play_animation("Idle")
+				await get_tree().create_timer(random_val(IDLE_TIME) - 1.0).timeout
+				var attack
+				if previous_state == State.SWEEP:
+					attack = ATTACKS_SWEEP.pick_random()
+				else:
+					attack = ATTACKS.pick_random()
 					
+				if attack == State.SWEEP: left = bool(randi_range(0, 1))
+				match attack:
+					State.SURROUND:
+						$Tele.play()
+						$Warning.play("Surround")
 					
-			await get_tree().create_timer(1.0).timeout
-			set_state(attack) # TODO : Change to pick random attack that wasnt the last one used
+					State.SWEEP:
+						$Tele.play()
+						if left:
+							$Warning.play("SweepL")
+						else:
+							$Warning.play("SweepR")
+					
+					State.WOMP:
+						$Tele.play()
+						$Warning.play("Womp")
+						play_animation("Womp")
+					
+						
+						
+				await get_tree().create_timer(1.0 / pow(1.25, Global.days_survived/5.0)).timeout
+				set_state(attack) # TODO : Change to pick random attack that wasnt the last one used
 		
 		State.SURROUND:
 			$woosh.stop()
@@ -144,17 +161,16 @@ func set_state(to : State):
 			play_animation("SurroundBack")
 		
 		State.SWEEP:
-			
 			$woosh.stop()
 			$woosh.play("woosh")
 			if left:
 				play_animation("SweepL")
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(0.5 / pow(1.25, Global.days_survived/5.0)).timeout
 				damage_areas.get_node("SweepL").set_used(false)
 				damage_areas.get_node("SweepL").time = 0.1
 			else: 
 				play_animation("SweepR")
-				await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(0.5 / pow(1.25, Global.days_survived/5.0)).timeout
 				damage_areas.get_node("SweepR").set_used(false)
 				damage_areas.get_node("SweepR").time = 0.1
 			$Warning.play("Idle")
@@ -179,6 +195,7 @@ func _on_animation_finished() -> void:
 			set_state(State.IDLE)
 		State.WOMP:
 			set_state(State.IDLE)
+	
 			
 const SURROUND_INTENSITY = 4.0
 const BOSS_1_PROJ_2 = preload("res://Scenes/Boss1Proj2.tscn")
@@ -197,6 +214,20 @@ func surround():
 
 
 func _process(delta: float) -> void:
+	if dead and animated_sprites[0].animation == "Death" and animated_sprites[0].frame == 26:
+		await get_tree().create_timer(2.0).timeout
+		Global.player.next_scene()
+		Global.run_memories("fight_end")
+		Global.prev_points = Global.points
+		Global.points += Global.run_memories("points_gained_end", Global.points_gained)
+		Global.points_gained = 0
+		Global.days_survived += 1
+		Engine.time_scale = 1
+		#await get_tree().create_timer(5.0).timeout
+		queue_free()
+	
+	
+	Global.curr_boss_health = health
 	Global.main.screenspace_hide_all()
 	Global.main.screenspace_enable("comb")
 	ghost_timer += delta
@@ -210,11 +241,18 @@ func _process(delta: float) -> void:
 	
 	match current_state:
 		State.SURROUND_IDLE:
+			if dead:
+				set_state(State.SURROUND_BACK)
+				
 			
-			pass
+	if Global.health == 0 or health <= 0:
+		if db_to_linear(audio_stream_player.volume_db) - 0.2 * delta > 0:
+			audio_stream_player.volume_db = linear_to_db(db_to_linear(audio_stream_player.volume_db) - 0.2 * delta)
+		else:audio_stream_player.volume_db =  linear_to_db(0.0)
 	
-	if Global.health == 0:
-		audio_stream_player.volume_db = linear_to_db(db_to_linear(audio_stream_player.volume_db) - 0.2 * delta)
+	
+		
+		
 			
 
 

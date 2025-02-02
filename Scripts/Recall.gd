@@ -5,6 +5,7 @@ const SPREAD_DISATANCE = 100.0
 const WAIT = 0.1
 
 @onready var memory_scene = preload("res://Scenes/Memory.tscn")
+@onready var info: AnimationPlayer = $Info
 
 var offer_num = 8
 var offers = []
@@ -34,14 +35,27 @@ func generate_memories():
 			#potential_offers.append(offer)
 	var exclude : Array = []
 	for i in range(offer_num):
-		var rarity = Global.random_weighted(weights)[0]
-		var memory = Global.random_memory(rarity, exclude)
-		var price = Global.run_memories("memory_price", Global.random_price(rarity))
-		exclude.append(memory["name"])
-		offers.append([memory, price])
+		var rarity
+		var memory
+		var count = 0
+		while (not memory or Global.has_memory(memory)) and count < 100:
+			rarity = Global.random_weighted(weights)[0]
+			memory = Global.random_memory(rarity, exclude)
+			count += 1
+		#memory = Global.avalable_memories[20]
+		if count < 100:
+			print(memory["name"])
+			
+			var price = Global.run_memories("memory_price", Global.random_price(memory["rarity"]))
+			exclude.append(memory["name"])
+			offers.append([memory, price])
+		else:
+			offer_num -= 1
 		
-
+var first = true
 func show_memories():
+	if not first: info.play("info_out")
+	else : first = false
 	if offers.size() != 0:
 		for i in range(offers.size()):
 			if player_in_radius:
@@ -67,13 +81,15 @@ func show_memories():
 		printerr("Show memories called but memories not generated")
 
 func hide_memories():
+	info.play("info_in")
+	$InfoDing.play()
 	for child in $Offers.get_children():
 		child.delete()
 	
 
 func delete_memory(index: int):
 	offers.remove_at(index)
-	offer_num -= 1	
+	offer_num -= 1
 	hide_memories()
 	show_memories()
 	

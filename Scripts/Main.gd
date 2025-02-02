@@ -5,13 +5,15 @@ extends Control
 const SCENES : Dictionary = {
 	"ache": preload("res://Scenes/Boss1.tscn"),
 	"shop": preload("res://Scenes/ShopScene.tscn"),
-	"death": preload("res://Scenes/Death.tscn")
+	"death": preload("res://Scenes/Death.tscn"),
+	"anotherday":preload("res://Scenes/anotherday.tscn")
 }
 
 func _ready() -> void:
 	$Transitions.show()
 	fake_trans_to_scene(Callable(self, "empty_method"), "fade_from_black", 3.0)
 	Global.main = self
+	Global.next_scene()
 
 func screenspace_hide_all():
 	for child in $ScreenspaceEffects.get_children():

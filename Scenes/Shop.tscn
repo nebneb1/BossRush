@@ -1,11 +1,118 @@
-[gd_scene load_steps=5 format=3 uid="uid://b08yvcm8vbur8"]
+[gd_scene load_steps=17 format=3 uid="uid://b08yvcm8vbur8"]
 
 [ext_resource type="PackedScene" uid="uid://bi8h22q1ndvov" path="res://Scenes/Player.tscn" id="1_2enyr"]
 [ext_resource type="Script" path="res://Scripts/Recall.gd" id="2_vny2j"]
 [ext_resource type="Texture2D" uid="uid://ddq8c57f7vb1i" path="res://Art/Sprites/Sparkles/star3.png" id="3_ar34r"]
+[ext_resource type="Shader" path="res://Shaders/Boss1_text.gdshader" id="4_m6jai"]
+[ext_resource type="FontFile" uid="uid://c2uo4xv5s585d" path="res://Fonts/GrapeSoda.ttf" id="5_dkuhm"]
+[ext_resource type="AudioStream" uid="uid://f7fceiccg3y1" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph5.wav" id="6_n12v4"]
+[ext_resource type="AudioStream" uid="uid://uku16uepk8ao" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph3.wav" id="7_gmcqa"]
+[ext_resource type="AudioStream" uid="uid://bvjr47xfjm5hq" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph2.wav" id="8_m8a6s"]
+[ext_resource type="AudioStream" uid="uid://cs7w1yqjvrmg4" path="res://Audio/SFX/DREAM-SFX-AcheTelegraph4.wav" id="9_c31mk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycpeu"]
 radius = 25.0276
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shttw"]
+shader = ExtResource("4_m6jai")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = Color(0.14902, 0, 0.105882, 1)
+shader_parameter/outline_color = Color(1, 0, 0.882353, 1)
+shader_parameter/progress = 0.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 1.158
+shader_parameter/distort_intencity = 0.0
+
+[sub_resource type="Animation" id="Animation_60bkc"]
+resource_name = "info_in"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D5/BossHealth:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D5/BossHealth:material:shader_parameter/goop_background_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1.8025, 1),
+"update": 0,
+"values": [Color(1, 0.509804, 0.831373, 1), Color(0.14902, 0, 0.105882, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_20bt3"]
+resource_name = "info_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D5/BossHealth:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u5p7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D5/BossHealth:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D5/BossHealth:material:shader_parameter/goop_background_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.14902, 0, 0.105882, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhql2"]
+_data = {
+"RESET": SubResource("Animation_u5p7q"),
+"info_in": SubResource("Animation_60bkc"),
+"info_out": SubResource("Animation_20bt3")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pdl5m"]
+random_pitch = 1.5
+streams_count = 4
+stream_0/stream = ExtResource("6_n12v4")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_gmcqa")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_m8a6s")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_c31mk")
+stream_3/weight = 1.0
 
 [node name="Shop" type="Node2D"]
 
@@ -25,6 +132,36 @@ shape = SubResource("CircleShape2D_ycpeu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Recall"]
 texture = ExtResource("3_ar34r")
+
+[node name="Node2D5" type="Node2D" parent="Recall"]
+position = Vector2(-0.435, -18.32)
+
+[node name="BossHealth" type="RichTextLabel" parent="Recall/Node2D5"]
+material = SubResource("ShaderMaterial_shttw")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = -319.0
+offset_top = 139.45
+offset_right = 320.0
+offset_bottom = 195.45
+theme_override_fonts/normal_font = ExtResource("5_dkuhm")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[tornado radius=1][color=light_blue][center]Press \"E\" when done"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Info" type="AnimationPlayer" parent="Recall"]
+libraries = {
+"": SubResource("AnimationLibrary_nhql2")
+}
+
+[node name="InfoDing" type="AudioStreamPlayer" parent="Recall"]
+stream = SubResource("AudioStreamRandomizer_pdl5m")
+volume_db = -14.729
+pitch_scale = 4.0
+bus = &"SFXDream"
 
 [connection signal="body_entered" from="Recall/Area2D" to="Recall" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Recall/Area2D" to="Recall" method="_on_area_2d_body_exited"]

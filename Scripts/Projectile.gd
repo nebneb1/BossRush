@@ -5,7 +5,7 @@ var speed = 150.0
 var timer = 0.0
 var damage = 1
 
-const GHOST_TIME = 0.05
+const GHOST_TIME = 0.1
 var ghost_timer = 0.0
 const GHOST_SCENE = preload("res://Scenes/Ghost.tscn")
 @onready var animations: AnimatedSprite2D = $AnimatedSprite2D

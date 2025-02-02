@@ -62,7 +62,7 @@ material = SubResource("ShaderMaterial_p45v1")
 sprite_frames = SubResource("SpriteFrames_kobr7")
 animation = &"anim"
 autoplay = "anim"
-frame_progress = 0.529891
+frame_progress = 0.920284
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 clip_children = 2
@@ -71,7 +71,7 @@ material = SubResource("ShaderMaterial_p45v1")
 sprite_frames = SubResource("SpriteFrames_kobr7")
 animation = &"anim"
 autoplay = "anim"
-frame_progress = 0.054661
+frame_progress = 0.445054
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D2"]
 position = Vector2(-5, 0)

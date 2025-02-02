@@ -1,31 +1,83 @@
-[gd_resource type="SpriteFrames" load_steps=234 format=3 uid="uid://cmkyr0gwlyyk3"]
+[gd_resource type="SpriteFrames" load_steps=286 format=3 uid="uid://cmkyr0gwlyyk3"]
 
+[ext_resource type="Texture2D" uid="uid://b7jxypildqljd" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath1.png" id="1_e8fow"]
+[ext_resource type="Texture2D" uid="uid://64whyaytfijb" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack5.png" id="1_fsjqm"]
 [ext_resource type="Texture2D" uid="uid://bks2e2madpy8f" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack1.png" id="1_nbccb"]
 [ext_resource type="Texture2D" uid="uid://cv4ru8p7e6o7m" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack2.png" id="2_0n3c8"]
+[ext_resource type="Texture2D" uid="uid://chxukbtvca135" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath2.png" id="2_04qkp"]
+[ext_resource type="Texture2D" uid="uid://yxbxbyyxrxym" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack6.png" id="2_ex2j8"]
+[ext_resource type="Texture2D" uid="uid://q4csbdir5che" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack7.png" id="3_7qh2i"]
+[ext_resource type="Texture2D" uid="uid://cyodpq8ecccom" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath3.png" id="3_a1wtn"]
 [ext_resource type="Texture2D" uid="uid://c6qbop2dx0bwp" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack3.png" id="3_aj88r"]
 [ext_resource type="Texture2D" uid="uid://cntg110scdetf" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack4.png" id="4_4r41s"]
+[ext_resource type="Texture2D" uid="uid://dr422f1m8r7rq" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack8.png" id="4_fm1mo"]
+[ext_resource type="Texture2D" uid="uid://dnldjrwhfvpwf" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath4.png" id="4_yeoif"]
 [ext_resource type="Texture2D" uid="uid://c2pxa00fystsh" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack5.png" id="5_bpdc8"]
+[ext_resource type="Texture2D" uid="uid://cjl7fujuglxm5" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath5.png" id="5_v1g74"]
+[ext_resource type="Texture2D" uid="uid://dm0y2ui0rgmij" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack9.png" id="5_xg3gl"]
 [ext_resource type="Texture2D" uid="uid://d3j2hu3yfytsx" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack6.png" id="6_c51ob"]
+[ext_resource type="Texture2D" uid="uid://b6l3hua74fmnj" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath6.png" id="6_nubcb"]
+[ext_resource type="Texture2D" uid="uid://bt0oryhm1ls0p" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack10.png" id="6_tjf16"]
 [ext_resource type="Texture2D" uid="uid://lfpaweuqe1q7" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack7.png" id="7_buc1h"]
+[ext_resource type="Texture2D" uid="uid://cj7hdo4dar6g5" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack11.png" id="7_fd6wh"]
+[ext_resource type="Texture2D" uid="uid://dwg8it0rb8ul1" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath7.png" id="7_vobgy"]
+[ext_resource type="Texture2D" uid="uid://da8o0q2t4k0op" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack12.png" id="8_anmvs"]
+[ext_resource type="Texture2D" uid="uid://lf827nt08ym6" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath8.png" id="8_c5sp3"]
 [ext_resource type="Texture2D" uid="uid://b6kyyinaibfbi" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack8.png" id="8_im3ba"]
+[ext_resource type="Texture2D" uid="uid://3qes1q0gxpmv" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack13.png" id="9_jfn2l"]
 [ext_resource type="Texture2D" uid="uid://gom8ghp6xvbu" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack9.png" id="9_qqrv5"]
+[ext_resource type="Texture2D" uid="uid://dcqxyc2pg3keq" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath9.png" id="9_y3bug"]
+[ext_resource type="Texture2D" uid="uid://d2uk3nuxhy8sy" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack14.png" id="10_6cxbd"]
 [ext_resource type="Texture2D" uid="uid://y3cdvwn1fqa8" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack10.png" id="10_ro1tv"]
+[ext_resource type="Texture2D" uid="uid://kf3c52rn7uly" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath10.png" id="10_x3vfo"]
 [ext_resource type="Texture2D" uid="uid://d057qo4gvm3yw" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack11.png" id="11_1ytyk"]
+[ext_resource type="Texture2D" uid="uid://yc1mldey53ax" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack15.png" id="11_5jgjs"]
+[ext_resource type="Texture2D" uid="uid://8257owwolkyh" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath11.png" id="11_721gm"]
+[ext_resource type="Texture2D" uid="uid://jj68kdr1kdgl" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack16.png" id="12_ftxf6"]
+[ext_resource type="Texture2D" uid="uid://dfvq0eomq0bf1" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath12.png" id="12_h151u"]
 [ext_resource type="Texture2D" uid="uid://dm3kwnfq2e2nf" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack12.png" id="12_l2jhc"]
 [ext_resource type="Texture2D" uid="uid://cehwtaf8nbr7r" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack13.png" id="13_av0qr"]
+[ext_resource type="Texture2D" uid="uid://c286got10cgy6" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack41.png" id="13_nkgjg"]
+[ext_resource type="Texture2D" uid="uid://ciiccj0jl1y0" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath13.png" id="13_uddq1"]
+[ext_resource type="Texture2D" uid="uid://dk0g5yttn8cjj" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack42.png" id="14_2herk"]
 [ext_resource type="Texture2D" uid="uid://cbgoyl1elug2u" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack14.png" id="14_ibftx"]
+[ext_resource type="Texture2D" uid="uid://deur2sxbo3wgs" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath14.png" id="14_kecb5"]
+[ext_resource type="Texture2D" uid="uid://bpmgvmffb8qe5" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack43.png" id="15_7nftp"]
 [ext_resource type="Texture2D" uid="uid://w4b7ekyaho8" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack15.png" id="15_bxas8"]
+[ext_resource type="Texture2D" uid="uid://dgaq3i2i1w1ui" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath15.png" id="15_s7gbj"]
+[ext_resource type="Texture2D" uid="uid://y1wxeh8kxidx" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath16.png" id="16_cxfvd"]
+[ext_resource type="Texture2D" uid="uid://dxoidav4ktjbh" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack44.png" id="16_fvbom"]
 [ext_resource type="Texture2D" uid="uid://dikhlaoj8xu27" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack16.png" id="16_puov5"]
+[ext_resource type="Texture2D" uid="uid://ril5hlj6hncp" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath17.png" id="17_06nl4"]
 [ext_resource type="Texture2D" uid="uid://cxwj6ffb7w7hc" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack17.png" id="17_78b0u"]
+[ext_resource type="Texture2D" uid="uid://of4bwdboqfeo" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack45.png" id="17_vruhh"]
+[ext_resource type="Texture2D" uid="uid://v8hdwrmnvmeh" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack46.png" id="18_3esc3"]
+[ext_resource type="Texture2D" uid="uid://cdy3o6cia81mk" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath18.png" id="18_15sn7"]
 [ext_resource type="Texture2D" uid="uid://u4pjhw6hfl16" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack18.png" id="18_py172"]
 [ext_resource type="Texture2D" uid="uid://ctbmbco7hnsh0" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack19.png" id="19_037e2"]
+[ext_resource type="Texture2D" uid="uid://bsqm2p3e5gj4t" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack47.png" id="19_cir7q"]
+[ext_resource type="Texture2D" uid="uid://cqiqukk2ifbrf" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath19.png" id="19_hdv17"]
 [ext_resource type="Texture2D" uid="uid://2kos80tocp74" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack20.png" id="20_2ga1s"]
+[ext_resource type="Texture2D" uid="uid://dvlwn6xrb1bks" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath20.png" id="20_as23j"]
+[ext_resource type="Texture2D" uid="uid://cveq5i0tfrbyv" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack48.png" id="20_cxpsc"]
 [ext_resource type="Texture2D" uid="uid://3dsx8v0x6nub" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack21.png" id="21_6ndpu"]
+[ext_resource type="Texture2D" uid="uid://beqojm8xtvqrh" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack49.png" id="21_e1b36"]
+[ext_resource type="Texture2D" uid="uid://bgnb3p681n5px" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath21.png" id="21_pylqf"]
+[ext_resource type="Texture2D" uid="uid://dvvou8vlg1kky" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath22.png" id="22_7j1mj"]
 [ext_resource type="Texture2D" uid="uid://dp2ljh37bv8yd" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack22.png" id="22_30b1k"]
+[ext_resource type="Texture2D" uid="uid://daqtp3bhev41b" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack17.png" id="22_c6uir"]
+[ext_resource type="Texture2D" uid="uid://c6g08remljw8d" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack19.png" id="23_7awj6"]
 [ext_resource type="Texture2D" uid="uid://c2k5i47olmqsl" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack23.png" id="23_ggfli"]
+[ext_resource type="Texture2D" uid="uid://e63xmr8dwy7t" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath23.png" id="23_tk8t2"]
+[ext_resource type="Texture2D" uid="uid://dlycs5o2t2yq2" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath24.png" id="24_3ykwy"]
 [ext_resource type="Texture2D" uid="uid://cr7vwo68c41ip" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack24.png" id="24_dx0rl"]
+[ext_resource type="Texture2D" uid="uid://ccytal30tgcus" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack26.png" id="24_rg74n"]
 [ext_resource type="Texture2D" uid="uid://cmvne8s1ko411" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack25.png" id="25_etcp1"]
+[ext_resource type="Texture2D" uid="uid://gwqbjq0ihwla" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack5/Attack31.png" id="25_lxkht"]
+[ext_resource type="Texture2D" uid="uid://cuuimpm64ke3e" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath25.png" id="25_ug6ro"]
 [ext_resource type="Texture2D" uid="uid://b4mh7dq6eu5pd" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack26.png" id="26_lxq2b"]
+[ext_resource type="Texture2D" uid="uid://db0m42q3hyai3" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath26.png" id="26_sfjc8"]
+[ext_resource type="Texture2D" uid="uid://dfiqlc4w4hx3g" path="res://Art/Sprites/Bosses/Ache/AcheBossDeath(real)(not clickbait)/AcheBossDeath27.png" id="27_b43fe"]
 [ext_resource type="Texture2D" uid="uid://cosysv1n3u134" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack27.png" id="27_h7f3m"]
 [ext_resource type="Texture2D" uid="uid://dvwjaqproydet" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack28.png" id="28_2dne7"]
 [ext_resource type="Texture2D" uid="uid://d3b1mpof1487u" path="res://Art/Sprites/Bosses/Ache/AcheBossAttack1/Ache boss Sprite-Attack29.png" id="29_c61t2"]
@@ -236,6 +288,182 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fsjqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ex2j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7qh2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fm1mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xg3gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tjf16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fd6wh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_anmvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jfn2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6cxbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5jgjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ftxf6")
+}],
+"loop": false,
+"name": &"Bloop",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_nkgjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2herk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7nftp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fvbom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vruhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3esc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_cir7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_cxpsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_e1b36")
+}],
+"loop": false,
+"name": &"BloopBack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_c6uir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7awj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rg74n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_lxkht")
+}],
+"loop": true,
+"name": &"BloopIdle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e8fow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_04qkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a1wtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yeoif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v1g74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nubcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vobgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_c5sp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y3bug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x3vfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_721gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_h151u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uddq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kecb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s7gbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cxfvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_06nl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_15sn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_hdv17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_as23j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pylqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7j1mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_tk8t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_3ykwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ug6ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_sfjc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_b43fe")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 30.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("49_pg4cc")

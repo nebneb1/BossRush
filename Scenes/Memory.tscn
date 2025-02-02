@@ -308,7 +308,7 @@ bus = &"SFXDream"
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_jfyd5")
-volume_db = -3.841
+volume_db = -9.197
 pitch_scale = 0.24
 max_polyphony = 3
 bus = &"SFXDream"

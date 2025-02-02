@@ -12,6 +12,7 @@ const GHOST_SCENE = preload("res://Scenes/Ghost.tscn")
 @onready var animations: Sprite2D = $AcheBullet
 
 func _ready() -> void:
+	damage = int(floor(pow(2, Global.days_survived/5.0)))
 	$Area2D.damage = damage
 	$Area2D.used = false
 
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 		queue_free()
 	$Area2D.used = false
 	if is_instance_valid(Global.player):
-		position += (Global.player.global_position-global_position).normalized() * SPEED * delta
+		position += (Global.player.global_position-global_position - Vector2(0.0, -10.0)).normalized() * SPEED * delta * pow(1.1, Global.days_survived/5.0)
 	ghost_timer += delta
 	if ghost_timer >= GHOST_TIME:
 		var inst = GHOST_SCENE.instantiate()

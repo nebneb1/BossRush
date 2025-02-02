@@ -1,0 +1,236 @@
+[gd_scene load_steps=14 format=3 uid="uid://28etdqhdv3k1"]
+
+[ext_resource type="Script" path="res://Scripts/anotherday.gd" id="1_58xo7"]
+[ext_resource type="Shader" path="res://Shaders/Boss1_text.gdshader" id="2_83w43"]
+[ext_resource type="FontFile" uid="uid://c2uo4xv5s585d" path="res://Fonts/GrapeSoda.ttf" id="3_h1m87"]
+[ext_resource type="AudioStream" uid="uid://b3dvjtbunklvd" path="res://Audio/Music/bleedink.ogg" id="7_42wov"]
+[ext_resource type="Shader" path="res://Shaders/comb2.gdshader" id="12_b1ui5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mcrea"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_js13i"]
+noise = SubResource("FastNoiseLite_mcrea")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itfjc"]
+shader = ExtResource("2_83w43")
+shader_parameter/goop_mask_color = Color(0.678431, 0.847059, 0.901961, 1)
+shader_parameter/tolerance = 0.5
+shader_parameter/goop_background_color = null
+shader_parameter/outline_color = Color(0.478431, 0, 0.403922, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+shader_parameter/ymult = 0.86
+shader_parameter/distort_intencity = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_js13i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxoo8"]
+shader = ExtResource("12_b1ui5")
+shader_parameter/brightness = 1.52
+shader_parameter/contrast = 3.27
+shader_parameter/intensity = 0.163
+shader_parameter/edge_width = 0.82
+shader_parameter/noise_ammount = 0.29
+
+[sub_resource type="Animation" id="Animation_5vpar"]
+resource_name = "show"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_am471"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_drg6r"]
+resource_name = "hide"
+length = 8.299
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ViewportContainer/Main/Lyrics/Main/Node2D2/PointsText2:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6, 8.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6, 8.2),
+"transitions": PackedFloat32Array(1.27456, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtrqv"]
+_data = {
+"RESET": SubResource("Animation_am471"),
+"hide": SubResource("Animation_drg6r"),
+"show": SubResource("Animation_5vpar")
+}
+
+[node name="AnotherDay" type="Node2D"]
+script = ExtResource("1_58xo7")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Main" type="SubViewport" parent="ViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 2
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Lyrics" type="SubViewportContainer" parent="ViewportContainer/Main"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="SubViewport" parent="ViewportContainer/Main/Lyrics"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+canvas_item_default_texture_repeat = 2
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Node2D2" type="Node2D" parent="ViewportContainer/Main/Lyrics/Main"]
+position = Vector2(60.76, 56.975)
+scale = Vector2(3.04, 3.04)
+
+[node name="PointsText2" type="RichTextLabel" parent="ViewportContainer/Main/Lyrics/Main/Node2D2"]
+material = SubResource("ShaderMaterial_itfjc")
+clip_contents = false
+custom_minimum_size = Vector2(0, 19.535)
+offset_left = 0.752995
+offset_top = 70.2569
+offset_right = 212.753
+offset_bottom = 92.2569
+theme_override_fonts/normal_font = ExtResource("3_h1m87")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[tornado radius=0.5][color=light_blue]And another day passes..."
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ScreenspaceEffects" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="comb" type="Control" parent="ScreenspaceEffects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScreenspaceEffects/comb"]
+z_index = 25
+material = SubResource("ShaderMaterial_xxoo8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gtrqv")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_42wov")
+autoplay = true
+bus = &"Music"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
